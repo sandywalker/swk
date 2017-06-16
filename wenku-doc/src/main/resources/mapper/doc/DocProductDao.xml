@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wenku.doc.dao.DocDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.wenku.doc.model.BaseDoc">
+        <result column="id" property="id"/>
+        <result column="title1" property="title1"/>
+        <result column="title2" property="title2"/>
+        <result column="keywords" property="keywords"/>
+        <result column="description" property="description"/>
+        <result column="seo_keywords" property="seoKeywords"/>
+        <result column="abstracts" property="abstracts"/>
+        <result column="status" property="status"/>
+        <result column="src" property="src"/>
+        <result column="levels" property="levels"/>
+        <result column="price" property="price"/>
+        <result column="author_id" property="authorId"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `id`,
+        `title1`,
+        `title2`,
+        `keywords`,
+        `description`,
+        `seo_keywords`,
+        `abstracts`,
+        `status`,
+        `src`,
+        `levels`,
+        `price`,
+        `author_id`,
+        `create_time`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="doc.id">
+        INSERT INTO ${table} (
+            `id`,
+            `title1`,
+            `title2`,
+            `keywords`,
+            `description`,
+            `seo_keywords`,
+            `abstracts`,
+            `status`,
+            `src`,
+            `levels`,
+            `price`,
+            `author_id`,
+            `create_time`
+        ) VALUES (
+            #{doc.id},
+            #{doc.title1},
+            #{doc.title2},
+            #{doc.keywords},
+            #{doc.description},
+            #{doc.seoKeywords},
+            #{doc.abstracts},
+            #{doc.status},
+            #{doc.src},
+            #{doc.levels},
+            #{doc.price},
+            #{doc.authorId},
+            #{doc.createTime}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="doc.id">
+        INSERT INTO ${table}
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="doc.id!=null"> `id`,</if>
+            <if test="doc.title1!=null"> `title1`,</if>
+            <if test="doc.title2!=null"> `title2`,</if>
+            <if test="doc.keywords!=null"> `keywords`,</if>
+            <if test="doc.description!=null"> `description`,</if>
+            <if test="doc.seoKeywords!=null"> `seo_keywords`,</if>
+            <if test="doc.abstracts!=null"> `abstracts`,</if>
+            <if test="doc.status!=null"> `status`,</if>
+            <if test="doc.src!=null"> `src`,</if>
+            <if test="doc.levels!=null"> `levels`,</if>
+            <if test="doc.price!=null"> `price`,</if>
+            <if test="doc.authorId!=null"> `author_id`,</if>
+            <if test="doc.createTime!=null"> `create_time`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="doc.id!=null">#{doc.id},</if>
+            <if test="doc.title1!=null">#{doc.title1},</if>
+            <if test="doc.title2!=null">#{doc.title2},</if>
+            <if test="doc.keywords!=null">#{doc.keywords},</if>
+            <if test="doc.description!=null">#{doc.description},</if>
+            <if test="doc.seoKeywords!=null">#{doc.seoKeywords},</if>
+            <if test="doc.abstracts!=null">#{doc.abstracts},</if>
+            <if test="doc.status!=null">#{doc.status},</if>
+            <if test="doc.src!=null">#{doc.src},</if>
+            <if test="doc.levels!=null">#{doc.levels},</if>
+            <if test="doc.price!=null">#{doc.price},</if>
+            <if test="doc.authorId!=null">#{doc.authorId},</if>
+            <if test="doc.createTime!=null">#{doc.createTime},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO ${table} (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="docs" item="doc" index="index" separator=",">
+            (
+            #{doc.id},
+            #{doc.title1},
+            #{doc.title2},
+            #{doc.keywords},
+            #{doc.description},
+            #{doc.seoKeywords},
+            #{doc.abstracts},
+            #{doc.status},
+            #{doc.src},
+            #{doc.levels},
+            #{doc.price},
+            #{doc.authorId},
+            #{doc.createTime}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE ${table}
+        <set>
+            <if test="doc.id != null"> `id` = #{doc.id}, </if>
+            <if test="doc.title1 != null"> `title1` = #{doc.title1}, </if>
+            <if test="doc.title2 != null"> `title2` = #{doc.title2}, </if>
+            <if test="doc.keywords != null"> `keywords` = #{doc.keywords}, </if>
+            <if test="doc.description != null"> `description` = #{doc.description}, </if>
+            <if test="doc.seoKeywords != null"> `seo_keywords` = #{doc.seoKeywords}, </if>
+            <if test="doc.abstracts != null"> `abstracts` = #{doc.abstracts}, </if>
+            <if test="doc.status != null"> `status` = #{doc.status}, </if>
+            <if test="doc.src != null"> `src` = #{doc.src}, </if>
+            <if test="doc.levels != null"> `levels` = #{doc.levels}, </if>
+            <if test="doc.price != null"> `price` = #{doc.price}, </if>
+            <if test="doc.authorId != null"> `author_id` = #{doc.authorId}, </if>
+            <if test="doc.createTime != null"> `create_time` = #{doc.createTime} </if>
+        </set>
+        WHERE id = #{doc.id}
+    </update>
+
+<!--auto generated by codehelper on 2017-06-05 16:22:44-->
+    <select id="find" resultMap="AllColumnMap">
+        select
+        <include refid="all_column"/>
+        from ${table}
+    </select>
+
+    <select id="findOne" resultType="BaseDoc">
+        select
+        <include refid="all_column"/>
+        from ${table}
+        WHERE id = #{id}
+    </select>
+
+    <delete id="delete">
+        DELETE  FROM ${table}
+        WHERE id = #{id}
+    </delete>
+</mapper>
+

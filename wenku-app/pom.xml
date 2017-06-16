@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>wenku</artifactId>
+        <groupId>com.wenku</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>wenku-app</artifactId>
+    <packaging>war</packaging>
+    <name>wenku-app Maven Webapp</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <tomcat.version>2.2</tomcat.version>
+        <webserver.port>8080</webserver.port>
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>com.wenku</groupId>
+            <artifactId>wenku-core</artifactId>
+            <version>${wenku-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.wenku</groupId>
+            <artifactId>wenku-doc</artifactId>
+            <version>${wenku-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.wenku</groupId>
+            <artifactId>wenku-user</artifactId>
+            <version>${wenku-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet-api}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>wenku-app</finalName>
+
+        <plugins>
+            <!-- tomcat7插件 -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>${tomcat.version}</version>
+                <configuration>
+                    <port>${webserver.port}</port>
+                    <path>/</path>
+                    <uriEncoding>${project.build.sourceEncoding}</uriEncoding>
+                </configuration>
+            </plugin>
+
+
+        </plugins>
+    </build>
+</project>

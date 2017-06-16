@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+        xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		">
+
+
+    <context:property-placeholder ignore-unresolvable="true" ignore-resource-not-found="true" location="classpath:app.properties,classpath:app.local.properties"/>
+    <tx:annotation-driven />
+
+
+    <!-- doc -->
+    <bean id="dataSourceDoc" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${doc.jdbc.url}"/>
+        <property name="username"  value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+
+        <property name="initialSize" value="${jdbc.minPoolSize}" />
+        <property name="minIdle" value="${jdbc.maxPoolSize}" />
+        <property name="maxActive" value="${jdbc.maxIdleTime}" />
+    </bean>
+
+    <bean id="sqlSessionFactoryDoc" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceDoc"/>
+        <property name="typeAliasesPackage" value="com.wenku.doc"/>
+        <property name="mapperLocations" value="classpath*:/mapper/doc/*.xml"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.wenku.doc"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryDoc"/>
+        <property name="annotationClass" value="org.apache.ibatis.annotations.Mapper"/>
+    </bean>
+
+    <bean id="tsDoc" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSourceDoc"/>
+    </bean>
+
+
+    <!-- user -->
+    <bean id="dataSourceUser" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${user.jdbc.url}"/>
+        <property name="username"  value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+
+        <property name="initialSize" value="${jdbc.minPoolSize}" />
+        <property name="minIdle" value="${jdbc.maxPoolSize}" />
+        <property name="maxActive" value="${jdbc.maxIdleTime}" />
+    </bean>
+
+
+
+    <bean id="sqlSessionFactoryUser" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceUser"/>
+        <property name="typeAliasesPackage" value="com.wenku.user"/>
+        <property name="mapperLocations" value="classpath*:/mapper/user/*.xml"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.wenku.user"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryUser"/>
+        <property name="annotationClass" value="org.apache.ibatis.annotations.Mapper"/>
+    </bean>
+
+    <bean id="tsUser" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSourceUser"/>
+    </bean>
+
+
+    <!-- pay -->
+    <bean id="dataSourcePay" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${pay.jdbc.url}"/>
+        <property name="username"  value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+
+        <property name="initialSize" value="${jdbc.minPoolSize}" />
+        <property name="minIdle" value="${jdbc.maxPoolSize}" />
+        <property name="maxActive" value="${jdbc.maxIdleTime}" />
+    </bean>
+
+
+    <bean id="sqlSessionFactoryPay" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSourcePay"/>
+        <property name="typeAliasesPackage" value="com.wenku.pay"/>
+        <property name="mapperLocations" value="classpath*:/mapper/pay/*.xml"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.wenku.pay"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryPay"/>
+        <property name="annotationClass" value="org.apache.ibatis.annotations.Mapper"/>
+    </bean>
+
+    <bean id="tsPay" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSourcePay"/>
+    </bean>
+
+
+
+
+</beans>
