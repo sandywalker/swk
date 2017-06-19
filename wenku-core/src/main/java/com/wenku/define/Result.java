@@ -9,6 +9,8 @@ public class Result {
     private boolean success;
     private String code = "0";
 
+    private static final String SERVER_ERROR_CODE = "500";
+
     public Result(){
         super();
     }
@@ -34,7 +36,7 @@ public class Result {
         this.setMessage(message);
         this.setSuccess(success);
         if (!success){
-            this.setCode("500");
+            this.setCode(SERVER_ERROR_CODE);
         }
     }
 
