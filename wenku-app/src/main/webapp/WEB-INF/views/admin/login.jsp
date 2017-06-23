@@ -15,8 +15,7 @@
             height:100%;
         }
         body{
-            background: url("${ctx}/resources/img/bg/login.jpg");
-            background-size: 100%;
+            background: #2468a2;
             position: relative;
         }
 

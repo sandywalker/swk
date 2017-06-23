@@ -1,0 +1,121 @@
+body{
+    font-size:14px;
+    font-family:PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
+}
+
+a:link,a:visited{
+    color:#666;
+    text-decoration: none;
+}
+
+a:hover,a:active{
+    text-decoration: underline;
+    color:#f15a22;
+}
+
+#home{
+   margin:0;
+   padding:0;
+}
+
+#homeC{
+    margin-top:150px;
+}
+#homelg{
+    text-align: center;
+}
+
+#homelg img{
+    height:80px;
+}
+
+#homeSh{
+    margin:20px auto 80px auto;
+    width:650px;
+}
+
+#homeQ{
+    width:500px;
+    height:35px;
+    font-size:14px;
+    border:1px solid #aaa;
+    border-right:none;
+    display: inline-block;
+    margin:0;
+    padding-left:10px;
+    -webkit-appearance: none;
+}
+
+#homeQ:focus{
+    border-color:#f15a22;
+    outline: 0;
+}
+
+#homeSm{
+    -webkit-appearance: none;
+    border:none;
+    cursor: pointer;
+    height:39px;
+    width:120px;
+    font-size: 16px;
+    background:#f15a22;
+    color:white;
+    margin:0;
+}
+
+#homeRec{
+    width:940px;
+    margin:20px auto;
+    min-height: 450px;
+}
+
+#homeRec .col{
+    float:left;
+    margin:0 5px;
+    width:300px;
+    height:400px;
+}
+
+#homeRec .cover{
+    margin-bottom: 10px;
+}
+
+#homeRec .cover img{
+    width:100%;
+}
+
+#homeRec ul,#homeRec li{
+    margin:0;
+    padding:0;
+}
+
+#homeRec li{
+    list-style:none;
+    line-height:25px;
+}
+
+
+.ext{
+    background: url(../img/icon/files.png) no-repeat;
+    height:16px;
+    width:16px;
+    top:3px;
+    position: relative;
+    display: inline-block;
+}
+
+.ext-doc,.ext-docx{
+    background-position: 0 -22px;
+}
+
+.ext-pdf{
+    background-position: 0 -106px;
+}
+
+.ext-ppt,.ext-pptx{
+    background-position: 0 -169px;
+}
+
+.ext-xls,.ect-xlsx{
+    background-position: 0 -274px;
+}
