@@ -27,9 +27,10 @@ public class BaseDoc implements Serializable{
     private BigDecimal price = BigDecimal.ZERO;
     private Long authorId;
     private Date createTime;
+    private Integer pageCount = 0;
 
-    private String statusStr;
-    private String srcStr;
+    private String statusStr; //计算字段，不做持久化
+    private String srcStr; //计算字段，不做持久化
 
 
     public Long getId() {
@@ -146,4 +147,11 @@ public class BaseDoc implements Serializable{
         return src!=null?src.getTitle():"";
     }
 
+    public Integer getPageCount() {
+        return pageCount;
+    }
+
+    public void setPageCount(Integer pageCount) {
+        this.pageCount = pageCount;
+    }
 }

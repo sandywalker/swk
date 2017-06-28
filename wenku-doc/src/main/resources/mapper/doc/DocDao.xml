@@ -16,6 +16,7 @@
         <result column="price" property="price"/>
         <result column="author_id" property="authorId"/>
         <result column="create_time" property="createTime"/>
+        <result column="page_count" property="pageCount"/>
     </resultMap>
 
     <!--auto generated Code-->
@@ -32,7 +33,8 @@
         `levels`,
         `price`,
         `author_id`,
-        `create_time`
+        `create_time`,
+        `page_count`
     </sql>
 
     <!--auto generated Code-->
@@ -50,7 +52,8 @@
             `levels`,
             `price`,
             `author_id`,
-            `create_time`
+            `create_time`,
+            `page_count`
         ) VALUES (
             #{doc.id},
             #{doc.title1},
@@ -64,7 +67,8 @@
             #{doc.levels},
             #{doc.price},
             #{doc.authorId},
-            #{doc.createTime}
+            #{doc.createTime},
+            #{doc.pageCount}
         )
     </insert>
 
@@ -85,6 +89,7 @@
             <if test="doc.price!=null"> `price`,</if>
             <if test="doc.authorId!=null"> `author_id`,</if>
             <if test="doc.createTime!=null"> `create_time`,</if>
+            <if test="doc.pageCount!=null"> `page_count`,</if>
         </trim>
         VALUES
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -101,6 +106,7 @@
             <if test="doc.price!=null">#{doc.price},</if>
             <if test="doc.authorId!=null">#{doc.authorId},</if>
             <if test="doc.createTime!=null">#{doc.createTime},</if>
+            <if test="doc.pageCount!=null">#{doc.pageCount},</if>
         </trim>
     </insert>
 
@@ -123,7 +129,8 @@
             #{doc.levels},
             #{doc.price},
             #{doc.authorId},
-            #{doc.createTime}
+            #{doc.createTime},
+            #{doc.pageCount}
             )
         </foreach>
     </insert>
@@ -145,6 +152,7 @@
             <if test="doc.price != null"> `price` = #{doc.price}, </if>
             <if test="doc.authorId != null"> `author_id` = #{doc.authorId}, </if>
             <if test="doc.createTime != null"> `create_time` = #{doc.createTime} </if>
+            <if test="doc.pageCount != null"> `page_count` = #{doc.pageCount} </if>
         </set>
         WHERE id = #{doc.id}
     </update>

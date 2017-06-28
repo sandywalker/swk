@@ -1,0 +1,264 @@
+@import "common";
+@import "home";
+
+.ext{
+  background: url(../img/icon/files.png) no-repeat;
+  height:16px;
+  width:16px;
+  top:3px;
+  position: relative;
+  display: inline-block;
+}
+
+.ext-doc,.ext-docx{
+  background-position: 0 -22px;
+}
+
+.ext-pdf{
+  background-position: 0 -106px;
+}
+
+.ext-ppt,.ext-pptx{
+  background-position: 0 -169px;
+}
+
+.ext-xls,.ect-xlsx{
+  background-position: 0 -274px;
+}
+
+
+
+.header{
+  background:#f2f2f2;
+  text-align: right;
+  padding:10px;
+  font-size:12px;
+  margin-bottom:20px;
+  a:link,a:visited{
+    color:$main-color;
+  }
+}
+
+
+.footer{
+  height:80px;
+  width:100%;
+  font-size:12px;
+  text-align: center;
+}
+
+.searchbar{
+  margin-bottom: 20px;
+  .logo{
+    img{
+      height:45px;
+    }
+  }
+  .search-form{
+    padding-top:10px;
+  }
+
+  .query{
+    width:83%;
+    height:35px;
+    font-size:14px;
+    border:1px solid #aaa;
+    border-right:none;
+    display: inline-block;
+    margin-right:-4px;
+    padding-left:10px;
+    -webkit-appearance: none;
+  }
+  .query:focus{
+    border-color:$main-color;
+    outline: 0;
+  }
+  .btn-search{
+    margin:0;
+    -webkit-appearance: none;
+    border:none;
+    cursor: pointer;
+    height:35px;
+    width:16%;
+    font-size: 16px;
+    background: $main-color;
+    color:white;
+  }
+}
+
+.filters{
+  font-size: 12px;
+  border-top: 1px solid #ddd;
+  margin-bottom:10px;
+  .filter{
+     line-height: 35px;
+     border-bottom:1px solid #ddd;
+    .key{
+      width:100px;
+      float:left;
+      padding-left:10px;
+      background:#eee;
+    }
+    .value{
+      margin-left:110px;
+      ul,li{
+        margin:0;
+        padding:0;
+      }
+      li{
+        list-style: none;
+        width:100px;
+        text-align: center;
+        margin-right:5px;
+        float:left;
+        a{
+          line-height: 22px;
+          padding:0 5px;
+          display: inline-block;
+          color: $dark-blue;
+        }
+        &.selected a{
+
+           background: $red;
+           color:white;
+        }
+      }
+      a:hover,a:active{
+        text-decoration: none;
+      }
+    }
+
+  }
+}
+
+.topbar{
+  font-size:12px;
+  height: 35px;
+  padding:5px;
+  background:#eee;
+  margin-bottom:15px;
+  .infos{
+    float:right;
+    line-height:25px;
+    margin-right:10px;
+    color:#aaa;
+    strong{
+      color: $main-color;
+    }
+  }
+  .pager{
+     float:right;
+     margin:0;
+    li a{
+      border-radius: 0;
+      padding:3px 15px;
+    }
+    li.disabled a{
+      color:#ccc;
+    }
+  }
+  .sorts{
+    .sort{
+      display: block;
+      width:80px;
+      float:left;
+      background: #fff;
+      border:1px solid #ddd;
+      padding:3px 5px;
+      text-align: center;
+      &:hover,&:active{
+         text-decoration: none;
+      }
+    }
+  }
+}
+
+.search-results{
+  margin-bottom: 20px;
+   ul{
+     margin:0;
+     padding:0;
+
+
+   }
+   li{
+     margin: 0 0 15px 0;
+     padding: 15px 0 15px 0;
+     list-style: none;
+     border-bottom: 1px solid #ddd;
+     .high{
+       color:#ef4136;
+     }
+     .doc-main{
+       position: relative;
+        .cover{
+           float:left;
+           img{
+             width:90px;
+             border:1px solid #ddd;
+           }
+          .caption{
+            text-align: center;
+            line-height: 22px;
+            font-size:12px;
+          }
+        }
+        .info{
+           margin-left:110px;
+
+           h2{
+             margin:0 0 15px 0;
+             font-size:18px;
+             a:link,a:visited{
+               color:#333;
+             }
+             a:hover{
+               color: $main-color;
+             }
+             .link-fav{
+               font-weight: normal;
+               float:right;
+               font-size:12px;
+               color: $dark-blue;
+               &:hover{
+                 text-decoration: none;
+                 color:$red;
+               }
+               i{
+                 color:$red;
+               }
+             }
+           }
+           p{
+             font-size:12px;
+             color:#999;
+           }
+        }
+       .info-footer{
+         position: absolute;
+         bottom:18px;
+         left:110px;
+         font-size:12px;
+         color: $dark-blue;
+         .create-time{
+           color:#999;
+         }
+         a{
+           color: $main-color;
+         }
+       }
+     }
+   }
+  .pagination>li>a{
+    color:#333;
+  }
+  .pagination>li>a:hover{
+    color: $main-color;
+  }
+
+}
+
+
+
+
+

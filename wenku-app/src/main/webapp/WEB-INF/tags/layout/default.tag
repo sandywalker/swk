@@ -2,8 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix='spring' uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <%@ attribute name="title" type="java.lang.String" description="页面的标题" required="true" %>
 <%@ attribute name="classes" type="java.lang.String" description="css class" %>
@@ -40,10 +38,12 @@
 
     <jsp:invoke fragment="css"/>
     <script>ctx = '${ctx}';</script>
-    <title> ${title}- <spring:message code="app_title"/></title>
+    <title> ${title} </title>
 </head>
 <body id="${id}" class="${classes}">
-
+    <header class="header">
+        欢迎访问搜文库！ <a href="#">注册</a>  &nbsp; | &nbsp; <a href="#">登录</a> &nbsp;&nbsp;&nbsp;
+    </header>
 <jsp:invoke fragment="main"/>
 <c:choose>
     <c:when test="${mode eq 'dev'}">
@@ -59,6 +59,23 @@
         <script type="text/javascript" src="${ctx}/resources/js/app.min.js"></script>
     </c:otherwise>
 </c:choose>
+    <footer class="footer">
+        <p>
+            <a href="http://www.sowenku.com/"
+               data-linkid="1" target="_blank">意见反馈</a> | <a
+                href="http://www.sowenku.com"
+                data-linkid="2" target="_blank">使用帮助</a> | <a
+                href="http://www.sowenku.com"
+                data-linkid="3" target="_blank">免责声明</a> | <a
+                href="http://www.sowenku.com/"
+                data-linkid="4" target="_blank">站长平台</a> | <a
+                href="http://www.sowenku.com"
+                data-linkid="5" target="_blank">推广合作</a>
+        </p>
+        <p>©2017 sowenku.com&nbsp;&nbsp;文酷科技旗下搜索服务&nbsp;&nbsp;京ICP备XXXXXX号-19&nbsp;&nbsp;
+            <a target="_blank" href="http://www.sowenku.com/">京公网安备11000002000022号</a>
+        </p>
+    </footer>
 
 
 <jsp:invoke fragment="js"/>

@@ -1,0 +1,122 @@
+html,body{
+  margin:0;
+  padding:0;
+}
+
+body{
+  position: relative;
+  font-size:14px;
+  font-family:PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
+}
+
+$main-color: #f15a22;
+$assist-color: #f15a22;
+
+
+$dark-blue: #005aa0;
+$blue:#009ad6;
+$cyan:#00a6ac;
+$green: #1d953f;
+$light-green:#7fb80e;
+$yellow:#ffd400;
+$orange:#f36c21;
+$red:#ef4136;
+$dark-red:#aa2116;
+
+
+a:link,a:visited{
+  color:#666;
+  text-decoration: none;
+}
+
+a:hover,a:active{
+  text-decoration: underline;
+  color:$main-color;
+}
+
+
+.radius{
+  border-radius: 3px;
+}
+
+.text-sm{
+  font-size:12px;
+}
+
+.dark-blue{
+  background: $dark-blue;
+}
+
+.blue{
+  background: $blue;
+}
+
+.cyan{
+  background: $cyan;
+}
+
+.green{
+  background: $green;
+}
+
+.light-green{
+  background: $light-green;
+}
+
+.yellow{
+  background: $yellow;
+}
+
+.orange{
+  background: $orange;
+}
+
+.red{
+  background: $red;
+}
+
+.dark-red{
+  background: $dark-red;
+}
+
+
+
+.text-dark-blue{
+  color: $dark-blue;
+}
+
+.text-blue{
+  color: $blue;
+}
+
+.text-cyan{
+  color: $cyan;
+}
+
+.text-green{
+  color: $green;
+}
+
+.text-light-green{
+  color: $light-green;
+}
+
+.text-yellow{
+  color: $yellow;
+}
+
+.text-orange{
+  color: $orange;
+}
+
+.text-red{
+  color: $red;
+}
+
+.text-dark-red{
+  color: $dark-red;
+}
+
+.text-gray{
+  color:#ccc;
+}

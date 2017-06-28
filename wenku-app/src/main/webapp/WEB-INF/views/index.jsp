@@ -22,17 +22,28 @@
     <script src="${ctx}/resources/js/respond.min.js"></script>
     <![endif]-->
 
+    <style>
+        html,body{
+            height:100%;
+        }
+    </style>
+
     <title> 找文档，就上搜文酷！ </title>
 
 
 </head>
 <body id="home">
+    <div id="homeHead" class="header">
+        欢迎访问搜文库！ <a href="#">注册</a>  &nbsp; | &nbsp; <a href="#">登录</a> &nbsp;&nbsp;&nbsp;
+    </div>
     <div id="homeC">
         <div id="homelg">
             <img src="${ctx}/resources/img/logo.png" alt="">
         </div>
         <div id="homeSh">
-            <input type="text" id="homeQ"><input type="submit" id="homeSm" value="搜一下">
+            <form action="/search">
+                <input type="text" name="query" id="homeQ"><input type="submit" id="homeSm" value="搜一下">
+            </form>
         </div>
         <div id="homeRec">
             <div class="col">
@@ -56,7 +67,7 @@
             </div>
             <div class="col">
                 <div class="cover">
-                    <img src="${ctx}/resources/img/demo/2.png" alt="" >
+                    <img src="${ctx}/resources/img/demo/1.jpg" alt="" >
                 </div>
                 <ul>
                     <li>
@@ -76,7 +87,7 @@
 
             <div class="col">
                 <div class="cover">
-                    <img src="${ctx}/resources/img/demo/4.png" alt="">
+                    <img src="${ctx}/resources/img/demo/1.jpg" alt="">
                 </div>
                 <ul>
                     <li>
@@ -95,6 +106,24 @@
             </div>
         </div>
     </div>
+
+
+    <div id="homeFoot">
+        <nav>
+            <a href="http://www.sowenku.com/"
+                data-linkid="1" target="_blank">意见反馈</a><span> | </span><a
+                href="http://www.sowenku.com"
+                data-linkid="2" target="_blank">使用帮助</a><span> | </span><a
+                href="http://www.sowenku.com"
+                data-linkid="3" target="_blank">免责声明</a><span> | </span><a
+                href="http://www.sowenku.com/"
+                data-linkid="4" target="_blank">站长平台</a><span> | </span><a
+                href="http://www.sowenku.com"
+                data-linkid="5" target="_blank">推广合作</a>
+        </nav>
+        <p>©2017 sowenku.com&nbsp;&nbsp;文酷科技旗下搜索服务&nbsp;&nbsp;京ICP备XXXXXX号-19&nbsp;&nbsp;<a target="_blank"
+                                                                                            href="http://www.sowenku.com/">京公网安备11000002000022号</a>
+        </p></div>
 
 </body>
 </html>
