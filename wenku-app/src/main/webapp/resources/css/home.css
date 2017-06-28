@@ -1,0 +1,67 @@
+#homeC {
+  padding-top: 1px; }
+
+#homelg {
+  margin-top: 150px;
+  text-align: center; }
+  #homelg img {
+    height: 70px; }
+
+#homeSh {
+  margin: 20px auto 50px auto;
+  width: 750px; }
+
+#homeQ {
+  width: 600px;
+  height: 35px;
+  font-size: 14px;
+  border: 1px solid #aaa;
+  border-right: none;
+  display: inline-block;
+  margin: 0;
+  padding-left: 10px;
+  -webkit-appearance: none; }
+  #homeQ:focus {
+    border-color: #f15a22;
+    outline: 0; }
+
+#homeSm {
+  -webkit-appearance: none;
+  border: none;
+  cursor: pointer;
+  height: 39px;
+  width: 120px;
+  font-size: 16px;
+  background: #f15a22;
+  color: white;
+  margin: 0; }
+
+#homeRec {
+  width: 940px;
+  margin: 20px auto;
+  min-height: 450px; }
+  #homeRec .col {
+    float: left;
+    margin: 0 5px;
+    width: 290px;
+    height: 280px;
+    border: 1px solid #ddd;
+    padding: 5px; }
+  #homeRec .cover {
+    margin-bottom: 10px; }
+  #homeRec .cover img {
+    width: 100%; }
+  #homeRec ul, #homeRec li {
+    margin: 0;
+    padding: 0; }
+  #homeRec li {
+    list-style: none;
+    line-height: 25px; }
+
+#homeFoot {
+  height: 80px;
+  width: 100%;
+  font-size: 12px;
+  text-align: center; }
+
+/*# sourceMappingURL=home.css.map */
