@@ -12,7 +12,6 @@
                 <input type="text" id="query" name="query" class="query" placeholder="">
                 <button type="submit" class="btn-search"> 搜一下 </button>
             </form>
-
         </div>
     </div>
 </nav>

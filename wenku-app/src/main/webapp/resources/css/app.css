@@ -260,7 +260,7 @@ a:hover, a:active {
   text-align: center; }
 
 .searchbar {
-  margin-bottom: 20px; }
+  margin-bottom: 30px; }
   .searchbar .logo img {
     height: 45px; }
   .searchbar .search-form {
@@ -414,5 +414,65 @@ a:hover, a:active {
     color: #333; }
   .search-results .pagination > li > a:hover {
     color: #f15a22; }
+
+#viewerTools {
+  height: 45px;
+  margin-bottom: 10px; }
+  #viewerTools.affix {
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #f2f2f2; }
+  #viewerTools .toolbar {
+    height: 45px;
+    line-height: 45px;
+    background: #f2f2f2; }
+    #viewerTools .toolbar .btn-success {
+      color: #fff;
+      margin: 5px 5px 0 0; }
+    #viewerTools .toolbar .btn-tool {
+      font-size: 18px;
+      display: inline-block;
+      padding: 0 10px;
+      margin: 2px 5px 0 5px;
+      height: 41px; }
+      #viewerTools .toolbar .btn-tool.active {
+        background: #fff;
+        color: #009ad6;
+        border: 1px solid #ddd; }
+      #viewerTools .toolbar .btn-tool:hover {
+        color: #009ad6;
+        background: #eee; }
+    #viewerTools .toolbar .current-page {
+      height: 22px;
+      text-align: center;
+      line-height: 22px;
+      width: 40px; }
+
+#viewerInfo h4 {
+  font-size: 22px; }
+#viewerInfo .action-info {
+  font-size: 12px;
+  color: #999; }
+
+#viewer {
+  min-height: 1000px;
+  border: 1px solid #ddd; }
+
+#viewerSide h5 {
+  border-bottom: 1px solid #ccc;
+  margint-top: 0;
+  padding-bottom: 8px; }
+#viewerSide.affix {
+  top: 50px;
+  width: 260px; }
+#viewerSide ul, #viewerSide li {
+  margin: 0;
+  padding: 0; }
+#viewerSide li {
+  list-style: none;
+  line-height: 40px;
+  border-bottom: 1px dotted #ddd; }
 
 /*# sourceMappingURL=app.css.map */
