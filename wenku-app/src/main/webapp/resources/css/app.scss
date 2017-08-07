@@ -47,6 +47,14 @@
   text-align: center;
 }
 
+.gradient{
+  background: #1c92d2;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #1c92d2, #f2fcfe);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #1c92d2, #f2fcfe); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+}
+
 .searchbar{
   margin-bottom: 30px;
   .logo{
@@ -320,7 +328,6 @@
 
 #viewerSide{
   h5{
-
     border-bottom: 1px solid #ccc;
     margint-top:0;
     padding-bottom: 8px;
@@ -340,6 +347,159 @@
   }
 }
 
+
+
+#signPanel{
+      background: #fff;
+      margin-top:100px;
+      margin-bottom: 100px;
+      //border:1px solid #ddd;
+      min-height: 500px;
+      .btn{
+        border-radius: 0;
+      }
+      .title{
+         background: $blue;
+         padding:15px;
+         color:#fff;
+         margin-bottom: 20px;
+         h3{
+           font-size: 18px;
+           font-weight: normal;
+           margin:0;
+           text-align: center;
+         }
+      }
+      form{
+       padding-top:50px;
+      }
+      input{
+       border-radius: 0;
+      }
+
+      button{
+        border-radius: 0;
+      }
+      .btn-warning{
+        background:$main-color;
+      }
+      .btn-warning:hover{
+        background:$main-color - 10;
+      }
+
+   #account{
+      border-left: 1px solid #ddd;
+      padding:20px 50px 0 50px;
+      min-height: 400px;
+     .btn-lg{
+       font-size:14px;
+       text-align: left;
+       padding-left:25%;
+     }
+     .btn-login{
+        padding:13px 16px;
+        text-align: center;
+     }
+     .icon{
+        width:26px;
+
+     }
+
+   }
+}
+
+
+#mySpace{
+
+  .my-container{
+     background:#f2f2f2;
+    border:1px solid #ddd;
+  }
+
+  .profile{
+     margin:20px 15px;
+     text-align:center;
+     padding-top:50px;
+    .avatar{
+      width:60px;
+      border-radius: 50%;
+    }
+    .name{
+      line-height:35px;
+    }
+  }
+
+
+
+  .sidebar{
+    min-height: 800px;
+    padding:0;
+
+    .upload-button{
+      margin:20px 15px;
+    }
+
+
+  }
+  .main{
+    background: #fff;
+    min-height: 800px;
+
+    border-left:none;
+  }
+
+  .upload-box{
+     height:200px;
+     width:80%;
+     margin: 50px auto;
+     background:#f2f2f2;
+     border:1px dashed #ddd;
+    text-align: center;
+    .btn-upload{
+       display: block;
+      border:none;
+       margin:70px auto 10px auto;
+       background: $blue;
+       width:50%;
+       height:60px;
+       border-radius: 3px;
+       color:#fff;
+       line-height: 60px;
+       font-size:22px;
+    }
+  }
+
+  .upload-hint{
+      color:#999;
+      li{
+        line-height: 30px;
+      }
+  }
+
+}
+
+.my-menu{
+  border:none;
+  .list-group-item{
+    border:none;
+    background: none;
+    padding-left:20%;
+    &:first-child,
+    &:last-child{
+      border-radius: 0;
+    }
+  }
+}
+
+.my-space .menu-doc,
+.my-space .menu-doc:hover,
+.my-orders .menu-orders,
+.my-orders .menu-orders:hover,
+.my-setting .menu-setting,
+.my-setting .menu-setting:hover{
+    background: #ddd;
+    color:#000;
+}
 
 
 

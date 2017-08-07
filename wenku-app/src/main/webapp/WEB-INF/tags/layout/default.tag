@@ -42,7 +42,7 @@
 </head>
 <body id="${id}" class="${classes}">
     <header class="header">
-        欢迎访问搜文库！ <a href="#">注册</a>  &nbsp; | &nbsp; <a href="#">登录</a> &nbsp;&nbsp;&nbsp;
+        欢迎访问搜文库！ <a href="/register">注册</a>  &nbsp; | &nbsp; <a href="/login">登录</a> &nbsp;&nbsp;&nbsp;
     </header>
 <jsp:invoke fragment="main"/>
 <c:choose>

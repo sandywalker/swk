@@ -34,7 +34,7 @@
 </head>
 <body id="home">
     <div id="homeHead" class="header">
-        欢迎访问搜文库！ <a href="#">注册</a>  &nbsp; | &nbsp; <a href="#">登录</a> &nbsp;&nbsp;&nbsp;
+        欢迎访问搜文库！ <a href="/register">注册</a>  &nbsp; | &nbsp; <a href="login">登录</a> &nbsp;&nbsp;&nbsp;
     </div>
     <div id="homeC">
         <div id="homelg">
@@ -53,15 +53,15 @@
                 <ul>
                     <li>
                         <i class="ext ext-doc"></i>
-                        <a href="#"> 2015 GRE复习指导----高频机经阅读...</a>
+                        <a href="/doc/view/1"> 2015 GRE复习指导----高频机经阅读...</a>
                     </li>
                     <li>
                         <i class="ext ext-ppt"></i>
-                        <a href="#"> 雅思写作备考指导-高分写作技巧</a>
+                        <a href="/doc/view/1"> 雅思写作备考指导-高分写作技巧</a>
                     </li>
                     <li>
                         <i class="ext ext-doc"></i>
-                        <a href="#"> 2015国家公务员考试行测模拟试卷</a>
+                        <a href="/doc/view/1"> 2015国家公务员考试行测模拟试卷</a>
                     </li>
                 </ul>
             </div>
@@ -72,15 +72,15 @@
                 <ul>
                     <li>
                         <i class="ext ext-doc"></i>
-                        <a href="#"> 2015 GRE复习指导----高频机经阅读...</a>
+                        <a href="/doc/view/1"> 2015 GRE复习指导----高频机经阅读...</a>
                     </li>
                     <li>
                         <i class="ext ext-doc"></i>
-                        <a href="#"> 高中语文知识点笔记-part4-山...</a>
+                        <a href="/doc/view/1"> 高中语文知识点笔记-part4-山...</a>
                     </li>
                     <li>
                         <i class="ext ext-pdf"></i>
-                        <a href="#"> 雅思写作备考指导-高分写作技巧</a>
+                        <a href="/doc/view/1"> 雅思写作备考指导-高分写作技巧</a>
                     </li>
                 </ul>
             </div>
@@ -92,15 +92,15 @@
                 <ul>
                     <li>
                         <i class="ext ext-doc"></i>
-                        <a href="#"> 雅思写作备考指导-高分写作技巧提高篇</a>
+                        <a href="/doc/view/1"> 雅思写作备考指导-高分写作技巧提高篇</a>
                     </li>
                     <li>
                         <i class="ext ext-doc"></i>
-                        <a href="#"> 2015国家公务员考试行测模拟试卷</a>
+                        <a href="/doc/view/1"> 2015国家公务员考试行测模拟试卷</a>
                     </li>
                     <li>
                         <i class="ext ext-xls"></i>
-                        <a href="#"> 雅思写作备考指导-高分写作技巧</a>
+                        <a href="/doc/view/1"> 雅思写作备考指导-高分写作技巧</a>
                     </li>
                 </ul>
             </div>

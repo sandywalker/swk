@@ -73,7 +73,7 @@
                                         </div>
                                         <div class="info">
                                             <h2> <a class="pull-right link-fav" href="#"> <i class="glyphicon glyphicon-heart"></i> 收藏</a>
-                                                <a href="#"> <span class="high">Java</span>  7从入门到精通</a></h2>
+                                                <a href="/doc/view/1"> <span class="high">Java</span>  7从入门到精通</a></h2>
                                             <p>Java学习笔记在JavaWorld技术论坛,为了方便更多的人学习Java,本书以原有的笔记文件为基础,加入新的主题以及更多的范例,以图书的形式呈现于世,为喜爱Java的读者提供了一本很好的学习教材。内容有Java JDK6中加强了jav...</p>
 
                                         </div>
@@ -91,7 +91,7 @@
                                         </div>
                                         <div class="info">
                                             <h2> <a class="pull-right link-fav" href="#"> <i class="glyphicon glyphicon-heart"></i> 收藏</a>
-                                                <a href="#"><span class="high">Java</span>  学习笔记下</a></h2>
+                                                <a href="/doc/view/1"><span class="high">Java</span>  学习笔记下</a></h2>
 
                                         </div>
                                         <div class="clearfix"></div>
@@ -108,7 +108,7 @@
                                         </div>
                                         <div class="info">
                                             <h2> <a class="pull-right link-fav" href="#"> <i class="glyphicon glyphicon-heart"></i> 收藏</a>
-                                                <a href="#"><span class="high">Java</span>  编码标准及规范手册</a> </h2>
+                                                <a href="/doc/view/1"><span class="high">Java</span>  编码标准及规范手册</a> </h2>
 
                                         </div>
                                         <div class="clearfix"></div>
@@ -125,7 +125,7 @@
                                         </div>
                                         <div class="info">
                                             <h2> <a class="pull-right link-fav" href="#"> <i class="glyphicon glyphicon-heart"></i> 收藏</a>
-                                                <a href="#">《<span class="high">Java</span>  编程思想 第四版》 英文版</a></h2>
+                                                <a href="/doc/view/1">《<span class="high">Java</span>  编程思想 第四版》 英文版</a></h2>
                                             <p>《java编程思想 第四版》 英文版_63...</p>
                                         </div>
                                         <div class="clearfix"></div>
@@ -142,7 +142,7 @@
                                         </div>
                                         <div class="info">
                                             <h2> <a class="pull-right link-fav" href="#"> <i class="glyphicon glyphicon-heart"></i> 收藏</a>
-                                                <a href="#"><span class="high">Java</span>  Java经典入门教程</a> </h2>
+                                                <a href="/doc/view/1"><span class="high">Java</span>  Java经典入门教程</a> </h2>
                                             <p><《java编程思想 第四版》 英文版_63...</p>
                                         </div>
                                         <div class="clearfix"></div>
@@ -159,7 +159,7 @@
                                         </div>
                                         <div class="info">
                                             <h2> <a class="pull-right link-fav" href="#"> <i class="glyphicon glyphicon-heart"></i> 收藏</a>
-                                                <a href="#"><span class="high">Java</span>  程序设计试读</a> </h2>
+                                                <a href="/doc/view/1"><span class="high">Java</span>  程序设计试读</a> </h2>
                                             <p><《java编程思想 第四版》 英文版_63...</p>
                                         </div>
                                         <div class="clearfix"></div>

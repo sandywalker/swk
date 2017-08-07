@@ -34,6 +34,17 @@ a:hover,a:active{
   color:$main-color;
 }
 
+a.btn-success:link,
+a.btn-success:visited,
+a.btn-warning:link,
+a.btn-warning:visited,
+a.btn-danger:link,
+a.btn-danger:visited,
+a.btn-info:link,
+a.btn-info:visited{
+  color:#fff;
+}
+
 
 .radius{
   border-radius: 3px;
@@ -119,4 +130,12 @@ a:hover,a:active{
 
 .text-gray{
   color:#ccc;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+   color:$blue;
+}
+
+label.error{
+  color:$red;
 }
