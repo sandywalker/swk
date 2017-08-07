@@ -53,6 +53,8 @@
 	<typeHandlers>
 		<typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" javaType="com.wenku.doc.model.DocStatus"/>
 		<typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" javaType="com.wenku.doc.model.DocSrc"/>
+		<typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" javaType="com.wenku.user.model.UserType"/>
+		<typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" javaType="com.wenku.user.model.UserStatus"/>
 	</typeHandlers>
 
 	<plugins>
