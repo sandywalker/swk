@@ -11,6 +11,7 @@ public class DocRecommend {
     private Long did;
     private String title;
     private String url;
+    private String tags;
     private Integer orderNumber = 99;
     private Date createTime;
 
@@ -61,5 +62,13 @@ public class DocRecommend {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
     }
 }

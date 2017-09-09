@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix='security' tagdir="/WEB-INF/tags/security"%>
 
 <%@ attribute name="title" type="java.lang.String" description="页面的标题" required="true" %>
 <%@ attribute name="classes" type="java.lang.String" description="css class" %>
@@ -41,9 +42,7 @@
     <title> ${title} </title>
 </head>
 <body id="${id}" class="${classes}">
-    <header class="header">
-        欢迎访问搜文库！ <a href="/register">注册</a>  &nbsp; | &nbsp; <a href="/login">登录</a> &nbsp;&nbsp;&nbsp;
-    </header>
+<jsp:include page="${ctx}/topinfo"/>
 <jsp:invoke fragment="main"/>
 <c:choose>
     <c:when test="${mode eq 'dev'}">

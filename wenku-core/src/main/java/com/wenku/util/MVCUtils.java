@@ -83,4 +83,12 @@ public class MVCUtils {
         return getCurrentRequest().getSession().getServletContext().getRealPath("/");
     }
 
+    public static String getHostAndContextPath(){
+        HttpServletRequest request = getCurrentRequest();
+        if (request!=null){
+            return request.getRequestURL().toString().replace(request.getServletPath(),"");
+        }
+        return null;
+    }
+
 }

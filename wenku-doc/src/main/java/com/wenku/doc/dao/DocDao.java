@@ -19,6 +19,8 @@ public interface DocDao {
 
     List<BaseDoc> find(@Param("table") String table);
 
+    List<BaseDoc> findByTitle1Containing(@Param("table") String table,@Param("key") String key);
+
     BaseDoc findOne( @Param("table") String table,@Param("id") long id);
 
     void delete( @Param("table") String table,@Param("id") long id);

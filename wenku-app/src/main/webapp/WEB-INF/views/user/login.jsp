@@ -13,11 +13,20 @@
                         <div class="body">
                             <div class="row">
                                 <div class="col-md-7">
-                                    <form class="form-horizontal" method="post">
+                                    <form id="formLogin" class="form-horizontal" action="${ctx}/login" method="post">
+                                        <c:if test="${result!=null&&!result.success}">
                                         <div class="form-group">
-                                            <label for="inputPhone" class="col-sm-3 control-label">手机号</label>
+                                            <label  class="col-sm-3 control-label">&nbsp;</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control input-lg" id="inputPhone" placeholder="手机号">
+                                                <div class="alert alert-danger">${result.message}</div>
+                                            </div>
+                                        </div>
+                                        </c:if>
+
+                                        <div class="form-group">
+                                            <label for="inputLoginName" class="col-sm-3 control-label">用户名</label>
+                                            <div class="col-sm-8">
+                                                <input name="loginName" type="text" value="${loginName}" class="form-control input-lg" id="inputLoginName" placeholder="电子邮箱地址">
                                             </div>
                                         </div>
                                         <%--<div class="form-group">--%>
@@ -29,7 +38,7 @@
                                         <div class="form-group">
                                             <label for="inputPassword" class="col-sm-3 control-label">密码</label>
                                             <div class="col-sm-8">
-                                                <input type="password" class="form-control input-lg" id="inputPassword" placeholder="密码">
+                                                <input name="password" type="password" class="form-control input-lg" id="inputPassword" placeholder="密码">
                                             </div>
                                         </div>
 
@@ -75,5 +84,16 @@
                 </div>
             </div>
         </div>
+    </jsp:attribute>
+    <jsp:attribute name="js">
+        <script type="text/javascript" src="${ctx}/resources/lib/validate/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="${ctx}/resources/lib/validate/localization/messages_zh.js"></script>
+        <script type="text/javascript" src="${ctx}/resources/js/user.js"></script>
+
+        <script type="text/javascript">
+            (function () {
+
+            })();
+        </script>
     </jsp:attribute>
 </layout:default>

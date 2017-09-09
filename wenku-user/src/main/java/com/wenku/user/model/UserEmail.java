@@ -6,7 +6,12 @@ package com.wenku.user.model;
 public class UserEmail {
 
     private Long uid;
-    private String acode;
+    private String email;
+
+    public UserEmail(Long uid, String email) {
+        this.uid = uid;
+        this.email = email;
+    }
 
     public Long getUid() {
         return uid;
@@ -16,13 +21,15 @@ public class UserEmail {
         this.uid = uid;
     }
 
-    public String getAcode() {
-        return acode;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAcode(String acode) {
-        this.acode = acode;
+    public void setEmail(String acode) {
+        this.email = acode;
     }
+
+
 
 
 }

@@ -9,6 +9,7 @@
         <result column="order_number" property="orderNumber"/>
         <result column="create_time" property="createTime"/>
         <result column="url" property="url"/>
+        <result column="tags" property="tags"/>
     </resultMap>
 
     <!--auto generated Code-->
@@ -18,7 +19,8 @@
         `title`,
         `order_number`,
         `create_time`,
-        `url`
+        `url`,
+        `tags`
     </sql>
 
     <!--auto generated Code-->
@@ -29,14 +31,16 @@
             `title`,
             `order_number`,
             `create_time`,
-            `url`
+            `url`,
+            `tags`
         ) VALUES (
             #{pojo.id},
             #{pojo.did},
             #{pojo.title},
             #{pojo.orderNumber},
             #{pojo.createTime},
-            #{pojo.url}
+            #{pojo.url},
+            #{pojo.tags}
         )
     </insert>
 
@@ -50,6 +54,7 @@
             <if test="pojo.orderNumber!=null"> `order_number`,</if>
             <if test="pojo.createTime!=null"> `create_time`,</if>
             <if test="pojo.url!=null"> `url`,</if>
+            <if test="pojo.tags!=null"> `tags`,</if>
         </trim>
         VALUES
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -59,6 +64,7 @@
             <if test="pojo.orderNumber!=null">#{pojo.orderNumber},</if>
             <if test="pojo.createTime!=null">#{pojo.createTime},</if>
             <if test="pojo.url!=null">#{pojo.url},</if>
+            <if test="pojo.tags!=null"> #{pojo.tags},</if>
         </trim>
     </insert>
 
@@ -74,7 +80,8 @@
             #{pojo.title},
             #{pojo.orderNumber},
             #{pojo.createTime},
-            #{pojo.url}
+            #{pojo.url},
+            #{pojo.tags}
             )
         </foreach>
     </insert>
@@ -88,7 +95,8 @@
             <if test="pojo.title != null"> `title` = #{pojo.title}, </if>
             <if test="pojo.orderNumber != null"> `order_number` = #{pojo.orderNumber}, </if>
             <if test="pojo.createTime != null"> `create_time` = #{pojo.createTime}, </if>
-            <if test="pojo.url != null"> `url` = #{pojo.url} </if>
+            <if test="pojo.url != null"> `url` = #{pojo.url}, </if>
+            <if test="pojo.tags != null"> `tags` = #{pojo.tags} </if>
         </set>
         WHERE id = #{pojo.id}
     </update>

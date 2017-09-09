@@ -20,7 +20,7 @@ public class PageUtils {
 
     public static <T> Page<T> wrapPage(List<T> data){
         PageInfo pageInfo = new PageInfo(data);
-        Pageable pageable = new PageRequest(pageInfo.getPageNum()-1,pageInfo.getPageSize());
+        Pageable pageable = new PageRequest(pageInfo.getPageNum(),pageInfo.getPageSize());
         return  new PageImpl<>(data,pageable,pageInfo.getTotal());
     }
 }

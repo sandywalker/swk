@@ -33,16 +33,14 @@
 
 </head>
 <body id="home">
-    <div id="homeHead" class="header">
-        欢迎访问搜文库！ <a href="/register">注册</a>  &nbsp; | &nbsp; <a href="login">登录</a> &nbsp;&nbsp;&nbsp;
-    </div>
+    <jsp:include page="${ctx}/topinfo"/>
     <div id="homeC">
         <div id="homelg">
             <img src="${ctx}/resources/img/logo.png" alt="">
         </div>
         <div id="homeSh">
             <form action="/search">
-                <input type="text" name="query" id="homeQ"><input type="submit" id="homeSm" value="搜一下">
+                <input type="text" name="key" id="homeQ"><input type="submit" id="homeSm" value="搜一下">
             </form>
         </div>
         <div id="homeRec">

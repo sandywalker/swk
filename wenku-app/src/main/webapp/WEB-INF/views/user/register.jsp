@@ -13,7 +13,7 @@
                         <div class="body">
                             <div class="row">
                                 <div class="col-md-7">
-                                    <form class="form-horizontal" id="regForm">
+                                    <form class="form-horizontal" id="regForm" action="${ctx}/register" method="post">
                                         <div class="form-group">
                                             <label for="inputMail" class="col-sm-3 control-label">邮箱</label>
                                             <div class="col-sm-8">

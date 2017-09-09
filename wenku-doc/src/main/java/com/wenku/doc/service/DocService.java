@@ -37,6 +37,12 @@ public class DocService {
         return PageUtils.wrapPage(docs);
     }
 
+    public Page<BaseDoc> findDocs(String table,String key,Pageable pageable){
+        PageUtils.startPage(pageable);
+        List<BaseDoc> docs = docDao.findByTitle1Containing(table,key);
+        return PageUtils.wrapPage(docs);
+    }
+
     public BaseDoc findOne(String table,Long id){
         return docDao.findOne(table,id);
     }

@@ -164,6 +164,13 @@
         from ${table}
     </select>
 
+    <select id="findByTitle1Containing" resultMap="AllColumnMap">
+        select
+        <include refid="all_column"/>
+        from ${table}
+        where title1 LIKE CONCAT('%','${key}','%' )
+    </select>
+
     <select id="findOne" resultType="BaseDoc">
         select
         <include refid="all_column"/>

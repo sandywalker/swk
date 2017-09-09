@@ -56,7 +56,11 @@
     <form id="recommendForm">
                 <input type="hidden" name="id" id="recommendId" value="{{id}}">
                 <div class="form-group">
-                    <label ></label>
+                    <label >标签</label>
+                    <input type="text" class="form-control" id="tags" name="tags" value="{{tags}}">
+                </div>
+                <div class="form-group">
+                    <label >文档标题</label>
                     <input type="text" class="form-control" id="title" name="title" value="{{title}}">
                 </div>
                 <div class="form-group">

@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <br>
-                        <p> 关键词 <span class="text-red"> "Java" </span> 共搜索到 2100 个文档！</p>
+                        <p> 关键词 <span class="text-red"> "${key}" </span> 共搜索到 ${total} 个文档！</p>
 
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                                 <li class="disabled"><a href="#"><</a></li>
                                 <li><a href="#">></a></li>
                             </ul>
-                            <div class="infos">共找到 2100 个文档 &nbsp;&nbsp; <strong> 1 / 20 </strong> </div>
+                            <div class="infos">共找到 ${total} 个文档 &nbsp;&nbsp; <strong> 1 / 20 </strong> </div>
                             <div class="sorts">
                                 <a href="#" class="sort">综合排序</a>
                                 <a href="#" class="sort">热度</a>
@@ -65,109 +65,129 @@
                     <div class="col-md-12">
                         <div class="search-results">
                             <ul>
-                                <li>
-                                    <div class="doc-main">
-                                        <div class="cover">
-                                            <img src="${ctx}/resources/img/demo/doc1.jpg" alt="">
-                                            <div class="caption"> 110 页</div>
-                                        </div>
-                                        <div class="info">
-                                            <h2> <a class="pull-right link-fav" href="#"> <i class="glyphicon glyphicon-heart"></i> 收藏</a>
-                                                <a href="/doc/view/1"> <span class="high">Java</span>  7从入门到精通</a></h2>
-                                            <p>Java学习笔记在JavaWorld技术论坛,为了方便更多的人学习Java,本书以原有的笔记文件为基础,加入新的主题以及更多的范例,以图书的形式呈现于世,为喜爱Java的读者提供了一本很好的学习教材。内容有Java JDK6中加强了jav...</p>
+                                <c:forEach items="${docs}" var="doc">
+                                    <li>
+                                        <div class="doc-main">
+                                            <div class="cover">
+                                                <img src="${ctx}/resources/img/demo/doc${doc.id}.jpg" alt="">
+                                                <div class="caption"> ${doc.pageCount} 页</div>
+                                            </div>
+                                            <div class="info">
+                                                <h2> <a class="pull-right link-fav" href="#"> <i class="glyphicon glyphicon-heart"></i> 收藏</a>
+                                                    <a href="${ctx}/doc/view/${doc.id}"> ${doc.title1} </a></h2>
+                                                <p>${doc.description}</p>
 
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="info-footer">
+                                                贡献者：<a href="#"> <i class="glyphicon glyphicon-user"></i> ${doc.authorId}</a> &nbsp;&nbsp; <i class="glyphicon glyphicon-time"></i> <span class="create-time"><fmt:formatDate value="${doc.createTime}" pattern="yyyy-MM-dd hh:mm"/></span> &nbsp;&nbsp; 格式： <i class="ext ext-pdf"></i> pdf
+                                            </div>
                                         </div>
-                                        <div class="clearfix"></div>
-                                        <div class="info-footer">
-                                            贡献者：<a href="#"> <i class="glyphicon glyphicon-user"></i> 文库大人</a> &nbsp;&nbsp; <i class="glyphicon glyphicon-time"></i> <span class="create-time">2016-10-12 10:21</span> &nbsp;&nbsp; 格式： <i class="ext ext-pdf"></i> pdf
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="doc-main">
-                                        <div class="cover">
-                                            <img src="${ctx}/resources/img/demo/doc3.jpg" alt="">
-                                            <div class="caption"> 21 页</div>
-                                        </div>
-                                        <div class="info">
-                                            <h2> <a class="pull-right link-fav" href="#"> <i class="glyphicon glyphicon-heart"></i> 收藏</a>
-                                                <a href="/doc/view/1"><span class="high">Java</span>  学习笔记下</a></h2>
+                                    </li>
+                                </c:forEach>
+                                <%--<li>--%>
+                                    <%--<div class="doc-main">--%>
+                                        <%--<div class="cover">--%>
+                                            <%--<img src="${ctx}/resources/img/demo/doc1.jpg" alt="">--%>
+                                            <%--<div class="caption"> 110 页</div>--%>
+                                        <%--</div>--%>
+                                        <%--<div class="info">--%>
+                                            <%--<h2> <a class="pull-right link-fav" href="#"> <i class="glyphicon glyphicon-heart"></i> 收藏</a>--%>
+                                                <%--<a href="/doc/view/1"> <span class="high">Java</span>  7从入门到精通</a></h2>--%>
+                                            <%--<p>Java学习笔记在JavaWorld技术论坛,为了方便更多的人学习Java,本书以原有的笔记文件为基础,加入新的主题以及更多的范例,以图书的形式呈现于世,为喜爱Java的读者提供了一本很好的学习教材。内容有Java JDK6中加强了jav...</p>--%>
 
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="info-footer">
-                                            贡献者：<a href="#"> <i class="glyphicon glyphicon-user"></i> 文库大人</a> &nbsp;&nbsp; <i class="glyphicon glyphicon-time"></i> <span class="create-time">2016-10-12 10:21</span> &nbsp;&nbsp; 格式： <i class="ext ext-pdf"></i> pdf
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="doc-main">
-                                        <div class="cover">
-                                            <img src="${ctx}/resources/img/demo/doc2.jpg" alt="">
-                                            <div class="caption"> 82 页</div>
-                                        </div>
-                                        <div class="info">
-                                            <h2> <a class="pull-right link-fav" href="#"> <i class="glyphicon glyphicon-heart"></i> 收藏</a>
-                                                <a href="/doc/view/1"><span class="high">Java</span>  编码标准及规范手册</a> </h2>
+                                        <%--</div>--%>
+                                        <%--<div class="clearfix"></div>--%>
+                                        <%--<div class="info-footer">--%>
+                                            <%--贡献者：<a href="#"> <i class="glyphicon glyphicon-user"></i> 文库大人</a> &nbsp;&nbsp; <i class="glyphicon glyphicon-time"></i> <span class="create-time">2016-10-12 10:21</span> &nbsp;&nbsp; 格式： <i class="ext ext-pdf"></i> pdf--%>
+                                        <%--</div>--%>
+                                    <%--</div>--%>
+                                <%--</li>--%>
+                                <%--<li>--%>
+                                    <%--<div class="doc-main">--%>
+                                        <%--<div class="cover">--%>
+                                            <%--<img src="${ctx}/resources/img/demo/doc3.jpg" alt="">--%>
+                                            <%--<div class="caption"> 21 页</div>--%>
+                                        <%--</div>--%>
+                                        <%--<div class="info">--%>
+                                            <%--<h2> <a class="pull-right link-fav" href="#"> <i class="glyphicon glyphicon-heart"></i> 收藏</a>--%>
+                                                <%--<a href="/doc/view/1"><span class="high">Java</span>  学习笔记下</a></h2>--%>
 
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="info-footer">
-                                            贡献者：<a href="#"> <i class="glyphicon glyphicon-user"></i> 文库大人</a> &nbsp;&nbsp; <i class="glyphicon glyphicon-time"></i> <span class="create-time">2016-10-12 10:21</span> &nbsp;&nbsp; 格式： <i class="ext ext-pdf"></i> pdf
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="doc-main">
-                                        <div class="cover">
-                                            <img src="${ctx}/resources/img/demo/doc4.jpg" alt="">
-                                            <div class="caption"> 1029 页</div>
-                                        </div>
-                                        <div class="info">
-                                            <h2> <a class="pull-right link-fav" href="#"> <i class="glyphicon glyphicon-heart"></i> 收藏</a>
-                                                <a href="/doc/view/1">《<span class="high">Java</span>  编程思想 第四版》 英文版</a></h2>
-                                            <p>《java编程思想 第四版》 英文版_63...</p>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="info-footer">
-                                            贡献者：<a href="#"> <i class="glyphicon glyphicon-user"></i> 文库大人</a> &nbsp;&nbsp; <i class="glyphicon glyphicon-time"></i> <span class="create-time">2016-10-12 10:21</span> &nbsp;&nbsp; 格式： <i class="ext ext-pdf"></i> pdf
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="doc-main">
-                                        <div class="cover">
-                                            <img src="${ctx}/resources/img/demo/doc5.jpg" alt="">
-                                            <div class="caption"> 23 页</div>
-                                        </div>
-                                        <div class="info">
-                                            <h2> <a class="pull-right link-fav" href="#"> <i class="glyphicon glyphicon-heart"></i> 收藏</a>
-                                                <a href="/doc/view/1"><span class="high">Java</span>  Java经典入门教程</a> </h2>
-                                            <p><《java编程思想 第四版》 英文版_63...</p>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="info-footer">
-                                            贡献者：<a href="#"> <i class="glyphicon glyphicon-user"></i> 文库大人</a> &nbsp;&nbsp; <i class="glyphicon glyphicon-time"></i> <span class="create-time">2016-10-12 10:21</span> &nbsp;&nbsp; 格式： <i class="ext ext-pdf"></i> pdf
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="doc-main">
-                                        <div class="cover">
-                                            <img src="${ctx}/resources/img/demo/doc6.jpg" alt="">
-                                            <div class="caption"> 23 页</div>
-                                        </div>
-                                        <div class="info">
-                                            <h2> <a class="pull-right link-fav" href="#"> <i class="glyphicon glyphicon-heart"></i> 收藏</a>
-                                                <a href="/doc/view/1"><span class="high">Java</span>  程序设计试读</a> </h2>
-                                            <p><《java编程思想 第四版》 英文版_63...</p>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="info-footer">
-                                            贡献者：<a href="#"> <i class="glyphicon glyphicon-user"></i> 文库大人</a> &nbsp;&nbsp; <i class="glyphicon glyphicon-time"></i> <span class="create-time">2016-10-12 10:21</span> &nbsp;&nbsp; 格式： <i class="ext ext-pdf"></i> pdf
-                                        </div>
-                                    </div>
-                                </li>
+                                        <%--</div>--%>
+                                        <%--<div class="clearfix"></div>--%>
+                                        <%--<div class="info-footer">--%>
+                                            <%--贡献者：<a href="#"> <i class="glyphicon glyphicon-user"></i> 文库大人</a> &nbsp;&nbsp; <i class="glyphicon glyphicon-time"></i> <span class="create-time">2016-10-12 10:21</span> &nbsp;&nbsp; 格式： <i class="ext ext-pdf"></i> pdf--%>
+                                        <%--</div>--%>
+                                    <%--</div>--%>
+                                <%--</li>--%>
+                                <%--<li>--%>
+                                    <%--<div class="doc-main">--%>
+                                        <%--<div class="cover">--%>
+                                            <%--<img src="${ctx}/resources/img/demo/doc2.jpg" alt="">--%>
+                                            <%--<div class="caption"> 82 页</div>--%>
+                                        <%--</div>--%>
+                                        <%--<div class="info">--%>
+                                            <%--<h2> <a class="pull-right link-fav" href="#"> <i class="glyphicon glyphicon-heart"></i> 收藏</a>--%>
+                                                <%--<a href="/doc/view/1"><span class="high">Java</span>  编码标准及规范手册</a> </h2>--%>
+
+                                        <%--</div>--%>
+                                        <%--<div class="clearfix"></div>--%>
+                                        <%--<div class="info-footer">--%>
+                                            <%--贡献者：<a href="#"> <i class="glyphicon glyphicon-user"></i> 文库大人</a> &nbsp;&nbsp; <i class="glyphicon glyphicon-time"></i> <span class="create-time">2016-10-12 10:21</span> &nbsp;&nbsp; 格式： <i class="ext ext-pdf"></i> pdf--%>
+                                        <%--</div>--%>
+                                    <%--</div>--%>
+                                <%--</li>--%>
+                                <%--<li>--%>
+                                    <%--<div class="doc-main">--%>
+                                        <%--<div class="cover">--%>
+                                            <%--<img src="${ctx}/resources/img/demo/doc4.jpg" alt="">--%>
+                                            <%--<div class="caption"> 1029 页</div>--%>
+                                        <%--</div>--%>
+                                        <%--<div class="info">--%>
+                                            <%--<h2> <a class="pull-right link-fav" href="#"> <i class="glyphicon glyphicon-heart"></i> 收藏</a>--%>
+                                                <%--<a href="/doc/view/1">《<span class="high">Java</span>  编程思想 第四版》 英文版</a></h2>--%>
+                                            <%--<p>《java编程思想 第四版》 英文版_63...</p>--%>
+                                        <%--</div>--%>
+                                        <%--<div class="clearfix"></div>--%>
+                                        <%--<div class="info-footer">--%>
+                                            <%--贡献者：<a href="#"> <i class="glyphicon glyphicon-user"></i> 文库大人</a> &nbsp;&nbsp; <i class="glyphicon glyphicon-time"></i> <span class="create-time">2016-10-12 10:21</span> &nbsp;&nbsp; 格式： <i class="ext ext-pdf"></i> pdf--%>
+                                        <%--</div>--%>
+                                    <%--</div>--%>
+                                <%--</li>--%>
+                                <%--<li>--%>
+                                    <%--<div class="doc-main">--%>
+                                        <%--<div class="cover">--%>
+                                            <%--<img src="${ctx}/resources/img/demo/doc5.jpg" alt="">--%>
+                                            <%--<div class="caption"> 23 页</div>--%>
+                                        <%--</div>--%>
+                                        <%--<div class="info">--%>
+                                            <%--<h2> <a class="pull-right link-fav" href="#"> <i class="glyphicon glyphicon-heart"></i> 收藏</a>--%>
+                                                <%--<a href="/doc/view/1"><span class="high">Java</span>  Java经典入门教程</a> </h2>--%>
+                                            <%--<p><《java编程思想 第四版》 英文版_63...</p>--%>
+                                        <%--</div>--%>
+                                        <%--<div class="clearfix"></div>--%>
+                                        <%--<div class="info-footer">--%>
+                                            <%--贡献者：<a href="#"> <i class="glyphicon glyphicon-user"></i> 文库大人</a> &nbsp;&nbsp; <i class="glyphicon glyphicon-time"></i> <span class="create-time">2016-10-12 10:21</span> &nbsp;&nbsp; 格式： <i class="ext ext-pdf"></i> pdf--%>
+                                        <%--</div>--%>
+                                    <%--</div>--%>
+                                <%--</li>--%>
+                                <%--<li>--%>
+                                    <%--<div class="doc-main">--%>
+                                        <%--<div class="cover">--%>
+                                            <%--<img src="${ctx}/resources/img/demo/doc6.jpg" alt="">--%>
+                                            <%--<div class="caption"> 23 页</div>--%>
+                                        <%--</div>--%>
+                                        <%--<div class="info">--%>
+                                            <%--<h2> <a class="pull-right link-fav" href="#"> <i class="glyphicon glyphicon-heart"></i> 收藏</a>--%>
+                                                <%--<a href="/doc/view/1"><span class="high">Java</span>  程序设计试读</a> </h2>--%>
+                                            <%--<p><《java编程思想 第四版》 英文版_63...</p>--%>
+                                        <%--</div>--%>
+                                        <%--<div class="clearfix"></div>--%>
+                                        <%--<div class="info-footer">--%>
+                                            <%--贡献者：<a href="#"> <i class="glyphicon glyphicon-user"></i> 文库大人</a> &nbsp;&nbsp; <i class="glyphicon glyphicon-time"></i> <span class="create-time">2016-10-12 10:21</span> &nbsp;&nbsp; 格式： <i class="ext ext-pdf"></i> pdf--%>
+                                        <%--</div>--%>
+                                    <%--</div>--%>
+                                <%--</li>--%>
                             </ul>
                             <nav aria-label="Page navigation">
                                 <ul class="pagination pull-right">

@@ -65,6 +65,7 @@
                         {name:'cover',title:'封面',width:110,value:coverValue},
                         {name:'id',title:'ID',width:80},
                         {name:'did',title:'文档 ID',width:80},
+                        {name:'tags',title:'文档标签',width:150},
                         {name:'title',title:'标题'},
                         {name:'url',title:'链接地址'},
                         {name:'orderNumber',title:'排序',width:120}

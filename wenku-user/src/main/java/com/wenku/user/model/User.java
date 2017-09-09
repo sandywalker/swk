@@ -1,5 +1,9 @@
 package com.wenku.user.model;
 
+import com.wenku.util.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
+
+import java.io.IOException;
 import java.util.Date;
 
 /**
@@ -12,10 +16,26 @@ public class User {
     private String email;
     private String pass;
     private String salt;
+    private String nickName;
     private UserStatus status = UserStatus.unactive;
     private UserType utype;
     private Date createDate;
     private Date updateDate;
+    private String loginName; //计算字段
+
+    public static User newUserByEmail(String mail,String pass){
+        User user = new User();
+        user.setEmail(mail);
+        try {
+            user.setPass(DigestUtils.md5(pass,user.getSalt().getBytes()));
+            user.setCreateDate(new Date());
+            user.setUpdateDate(new Date());
+            user.setUtype(UserType.email);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return  user;
+    }
 
     public Long getId() {
         return id;
@@ -50,6 +70,9 @@ public class User {
     }
 
     public String getSalt() {
+        if (StringUtils.isNotBlank(email)&&email.length()>3) {
+            salt = email.substring(0, 2) + email.substring(email.length() - 2);
+        }
         return salt;
     }
 
@@ -87,6 +110,28 @@ public class User {
 
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
+    }
+
+    public String getLoginName() {
+        if (StringUtils.isNotBlank(getPhone())){
+            return getPhone();
+        }
+        return getEmail();
+    }
+
+    public String getNickName() {
+        if (StringUtils.isBlank(nickName)){
+            return getLoginName();
+        }
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("abc".substring(0,2));
     }
 
 

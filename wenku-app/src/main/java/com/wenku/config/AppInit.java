@@ -1,5 +1,6 @@
 package com.wenku.config;
 
+import com.wenku.security.filter.UserOnLineFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -21,6 +22,8 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         super.onStartup(servletContext);
+        FilterRegistration userOnlineFilter = servletContext.addFilter("userOnlineFilter", new UserOnLineFilter("/login","/user/**","/admin/**"));
+
         StringBuilder sb = new StringBuilder();
         sb.append("\r\n======================================================================\r\n");
         sb.append("\r\n    Welcome to Sowenku ! \r\n");
@@ -30,7 +33,9 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
 
     @Override
     protected Filter[] getServletFilters() {
-        return new Filter[]{new CharacterEncodingFilter("UTF-8",true)};
+        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter("UTF-8",true);
+        UserOnLineFilter userOnLineFilter = new UserOnLineFilter("/login","/user/**","/admin/**");
+        return new Filter[]{characterEncodingFilter,userOnLineFilter};
     }
 
     protected Class<?>[] getRootConfigClasses() {

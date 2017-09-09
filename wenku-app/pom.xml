@@ -23,6 +23,13 @@
             <artifactId>wenku-core</artifactId>
             <version>${wenku-version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.wenku</groupId>
+            <artifactId>wenku-user</artifactId>
+            <version>${wenku-version}</version>
+        </dependency>
+
+
 
         <dependency>
             <groupId>com.wenku</groupId>
@@ -30,11 +37,7 @@
             <version>${wenku-version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.wenku</groupId>
-            <artifactId>wenku-user</artifactId>
-            <version>${wenku-version}</version>
-        </dependency>
+
 
         <dependency>
             <groupId>javax.servlet</groupId>
