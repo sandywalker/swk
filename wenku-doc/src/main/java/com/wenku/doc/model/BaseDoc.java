@@ -21,7 +21,8 @@ public class BaseDoc implements Serializable{
     private String description;
     private String seoKeywords;
     private String abstracts;
-    private DocStatus status = DocStatus.unchecked;
+    private String fileType;
+    private DocStatus status = DocStatus.wait;
     private DocSrc src = DocSrc.user;
     private Integer levels = 0;
     private BigDecimal price = BigDecimal.ZERO;
@@ -153,5 +154,13 @@ public class BaseDoc implements Serializable{
 
     public void setPageCount(Integer pageCount) {
         this.pageCount = pageCount;
+    }
+
+    public String getFileType() {
+        return fileType;
+    }
+
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
     }
 }

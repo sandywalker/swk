@@ -628,7 +628,7 @@ var UIUtils = (function($){
     }
 
     DataManager.prototype.init= function(option){
-        this.query = $.extend({page:1,size:SKGlobals.DEFAULT_PAGE_SIZE},option.query);
+        this.query = $.extend({page:0,size:SKGlobals.DEFAULT_PAGE_SIZE},option.query);
         this.$root = typeof option.root === 'string'?$(option.root):option.root;
         this.urls = $.extend({list:'',item:''},option.urls);
         this.handleEvents();
@@ -660,7 +660,7 @@ var UIUtils = (function($){
      */
     DataManager.prototype._fixQuery= function(query){
         if (typeof query.page == 'undefined' ||query.page==null){
-            query.page = 1;
+            query.page = 0;
         }
         if (!query.size){
             query.size = SKGlobals.DEFAULT_PAGE_SIZE;
@@ -821,7 +821,7 @@ var UIUtils = (function($){
         var $root = this.$root;
 
         $root.on('data.page.change',function(e,context){
-            self.query.page = context.number+1; //分页对象是 0 开始的，spring mvc 的 pageable 需要 + 1 才能正常绑定
+            self.query.page = context.number; //分页对象是 0 开始的，spring mvc 的 pageable 需要 + 1 才能正常绑定
             self.query.size = context.size;
             self.loadRemoteList(self.query);
         });

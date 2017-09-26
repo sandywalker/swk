@@ -12,7 +12,7 @@
                         <p class="name">测试用户</p>
                     </div>
                     <div class="upload-button">
-                        <a href="${ctx}/user/upload" target="_blank" class="btn btn-info btn-block"> <i class="glyphicon glyphicon-upload"></i> 上传文档</a>
+                        <a href="${ctx}/user/doc/upload" target="_blank" class="btn btn-info btn-block"> <i class="glyphicon glyphicon-upload"></i> 上传文档</a>
                     </div>
 
                     <br>
@@ -22,34 +22,38 @@
 
                     <br>
                     <ul class="nav nav-tabs">
-                        <li role="presentation" class="active"><a href="#"> <i class="glyphicon glyphicon-shopping-cart"></i> 我购买的</a></li>
-                        <li role="presentation" ><a href="#"> <i class="glyphicon glyphicon-upload"></i> 我上传的</a></li>
+                        <li role="presentation" class="active"><a href="${ctx}/user/my"> <i class="glyphicon glyphicon-shopping-cart"></i> 我购买的</a></li>
+                        <li role="presentation" ><a href="${ctx}/user/doc/myUpload/wait"> <i class="glyphicon glyphicon-upload"></i> 我上传的</a></li>
                     </ul>
                     <br>
 
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>名称</th>
-                                <th>来源</th>
-                                <th>创建日期</th>
-                                <th>购买日期</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <i class="ext ext-doc"></i>
-                                    <a href="/doc/view/1"> 高中语文知识点笔记-part4-山...</a>
-                                </td>
-                                <td>
-                                    购买
-                                </td>
-                                <td>2016-10-15</td>
-                                <td>2017-6-1</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="well text-center">
+                        暂时没有购买过任何文档哦！
+                    </div>
+
+                    <%--<table class="table">--%>
+                        <%--<thead>--%>
+                            <%--<tr>--%>
+                                <%--<th>名称</th>--%>
+                                <%--<th>来源</th>--%>
+                                <%--<th>创建日期</th>--%>
+                                <%--<th>购买日期</th>--%>
+                            <%--</tr>--%>
+                        <%--</thead>--%>
+                        <%--<tbody>--%>
+                            <%--<tr>--%>
+                                <%--<td>--%>
+                                    <%--<i class="ext ext-doc"></i>--%>
+                                    <%--<a href="/doc/view/1"> 高中语文知识点笔记-part4-山...</a>--%>
+                                <%--</td>--%>
+                                <%--<td>--%>
+                                    <%--购买--%>
+                                <%--</td>--%>
+                                <%--<td>2016-10-15</td>--%>
+                                <%--<td>2017-6-1</td>--%>
+                            <%--</tr>--%>
+                        <%--</tbody>--%>
+                    <%--</table>--%>
                 </div>
             </div>
         </div>

@@ -15,6 +15,12 @@
         </a>
         <ul class="hoe-sub-menu">
             <li>
+                <a href="javascript:void(0)" class="function-menu" data-title="文档转换监控" data-url="/admin/doc/procQueue">
+                    <span class="menu-text">文档转换监控</span>
+                    <span class="selected"></span>
+                </a>
+            </li>
+            <li>
                 <a href="javascript:void(0)" class="function-menu" data-title="文档审核" data-url="/admin/doc/uploadHome">
                     <span class="menu-text">文档审核</span>
                     <span class="selected"></span>

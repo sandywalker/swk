@@ -5,7 +5,7 @@ package com.wenku.doc.model;
  */
 public enum  DocStatus {
 
-    unchecked("待审核"),ok("通过"),failed("未通过");
+    wait("审核中"),ok("通过"),failed("未通过");
 
     private String title;
 

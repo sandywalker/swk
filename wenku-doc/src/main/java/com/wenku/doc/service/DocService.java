@@ -2,6 +2,7 @@ package com.wenku.doc.service;
 
 import com.wenku.define.Result;
 import com.wenku.doc.dao.DocDao;
+import com.wenku.doc.dao.ProcQueueDao;
 import com.wenku.doc.model.*;
 import com.wenku.support.data.PageUtils;
 import com.wenku.util.MVCUtils;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -31,10 +33,31 @@ public class DocService {
     @Autowired
     private DocRecommendService docRecommendService;
 
+
     public Page<BaseDoc> findDocs(String table,Pageable pageable){
         PageUtils.startPage(pageable);
         List<BaseDoc> docs = docDao.find(table);
         return PageUtils.wrapPage(docs);
+    }
+
+    public Page<BaseDoc> findUncheckedDoc(String table,String key,Pageable pageable){
+        PageUtils.startPage(pageable);
+        List<BaseDoc> docs = docDao.findUnChecked(table,key);
+        return PageUtils.wrapPage(docs);
+    }
+
+    public List<BaseDoc> findByAuthorAndStatus(Long authorId,DocStatus status){
+        String table = null;
+        if (DocStatus.wait.equals(status)){
+            table = DocTableNames.TABLE_UPLOAD;
+        }else if (DocStatus.ok.equals(status)){
+            table = DocTableNames.TABLE_PRODUCT;
+        }else{
+            table = DocTableNames.TABLE_TRASH;
+        }
+       // PageUtils.startPage(pageable);
+        List<BaseDoc> docs = docDao.findByAuthorIdAndStatus(table,authorId,status);
+        return docs;
     }
 
     public Page<BaseDoc> findDocs(String table,String key,Pageable pageable){
@@ -47,6 +70,23 @@ public class DocService {
         return docDao.findOne(table,id);
     }
 
+
+    @Transactional("tsDoc")
+    public BaseDoc newUpload(String title,String fileType,String description,Long uid){
+       BaseDoc baseDoc = new BaseDoc();
+       baseDoc.setPrice(BigDecimal.ZERO);
+       String t = title.length()>64? title.substring(0,64):title;
+       baseDoc.setTitle1(t);
+       baseDoc.setTitle2(t);
+       baseDoc.setDescription(description);
+       baseDoc.setStatus(DocStatus.wait);
+       baseDoc.setAuthorId(uid);
+       baseDoc.setCreateTime(new Date());
+       baseDoc.setFileType(fileType);
+
+       docDao.insert(DocTableNames.TABLE_UPLOAD,baseDoc);
+       return  baseDoc;
+    }
 
     @Transactional("tsDoc")
     public BaseDoc save(String table,BaseDoc doc){
@@ -92,7 +132,7 @@ public class DocService {
         if (data==null){
             return Result.fail("数据不存在！");
         }
-        data.setId(0L);
+        data.setId(id);
         docDao.insert(DocTableNames.TABLE_PRODUCT,data);
         docDao.delete(DocTableNames.TABLE_UPLOAD,id);
         CheckLog checkLog = new CheckLog(id,data.getAuthorId(), DocStatus.ok,"");
@@ -106,7 +146,7 @@ public class DocService {
         if (data==null){
             return Result.fail("数据不存在！");
         }
-        data.setId(0L);
+        data.setId(id);
         docDao.insert(DocTableNames.TABLE_TRASH,data);
         docDao.delete(DocTableNames.TABLE_UPLOAD,id);
         CheckLog checkLog = new CheckLog(id,data.getAuthorId(), DocStatus.failed,"审核不通过");

@@ -27,31 +27,35 @@
                     </ul>
                     <br>
 
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>商品名称</th>
-                                <th>订单金额</th>
-                                <th>下单时间</th>
-                                <th>订单状态</th>
-                                <th>操作</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <i class="ext ext-doc"></i>
-                                    <a href="/doc/view/1"> 高中语文知识点笔记-part4-山...</a>
-                                </td>
-                                <td>
-                                    3.00 ¥
-                                </td>
-                                <td>2016-6-1</td>
-                                <td>已支付</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="well text-center">
+                        暂时没有订单哦！
+                    </div>
+
+                    <%--<table class="table">--%>
+                        <%--<thead>--%>
+                            <%--<tr>--%>
+                                <%--<th>商品名称</th>--%>
+                                <%--<th>订单金额</th>--%>
+                                <%--<th>下单时间</th>--%>
+                                <%--<th>订单状态</th>--%>
+                                <%--<th>操作</th>--%>
+                            <%--</tr>--%>
+                        <%--</thead>--%>
+                        <%--<tbody>--%>
+                            <%--<tr>--%>
+                                <%--<td>--%>
+                                    <%--<i class="ext ext-doc"></i>--%>
+                                    <%--<a href="/doc/view/1"> 高中语文知识点笔记-part4-山...</a>--%>
+                                <%--</td>--%>
+                                <%--<td>--%>
+                                    <%--3.00 ¥--%>
+                                <%--</td>--%>
+                                <%--<td>2016-6-1</td>--%>
+                                <%--<td>已支付</td>--%>
+                                <%--<td>&nbsp;</td>--%>
+                            <%--</tr>--%>
+                        <%--</tbody>--%>
+                    <%--</table>--%>
                 </div>
             </div>
         </div>

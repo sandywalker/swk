@@ -60,4 +60,8 @@ public class AdminAuth {
         }
         return Result.success();
     }
+
+    public static void main(String[] args) throws IOException{
+        System.out.println(DigestUtils.md5("admin@wk123","admin".substring(1).getBytes()));
+    }
 }

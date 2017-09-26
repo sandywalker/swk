@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title><spring:message code="app_title"/></title>
+        <title><spring:message code="app_title"/> 后台</title>
         <link href="${ctx}/resources/lib/hoe/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="${ctx}/resources/lib/hoe/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="${ctx}/resources/lib/hoe/css/hoe.css" rel="stylesheet" type="text/css">
@@ -84,7 +84,7 @@
             </div>
             <div class="hoe-right-header" hoe-position-type="relative" hoe-color-type="header-bg9" >
                 <div class="pull-right">
-                    <a class="logout btn" href="${ctx}/logout">
+                    <a class="logout btn" href="${ctx}/admin/logout">
                         <span class="text-danger"><i class="glyphicon glyphicon-off"></i></span> 退出系统 &nbsp;&nbsp;
                     </a>
                 </div>

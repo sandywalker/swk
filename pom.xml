@@ -62,6 +62,7 @@
         <module>wenku-doc</module>
         <module>wenku-user</module>
         <module>wenku-search</module>
+        <module>wenku-convert</module>
     </modules>
 
     <build>

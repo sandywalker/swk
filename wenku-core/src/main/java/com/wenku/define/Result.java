@@ -8,12 +8,7 @@ public class Result {
     private String message;
     private boolean success;
     private String code = "0";
-
-    private static final String SERVER_ERROR_CODE = "500";
-
-    public Result(){
-        super();
-    }
+    private Object data;
 
     public static Result success(){
         return new Result(true);
@@ -23,8 +18,20 @@ public class Result {
         return new Result(true,msg);
     }
 
+    public static Result success(String msg,Object data){
+        return new Result(true,msg,data);
+    }
+
     public static Result fail(String msg){
         return new Result(false,msg);
+    }
+
+    public static Result fail(String msg,Object data){
+        return new Result(false,msg,data);
+    }
+
+    public Result(){
+        super();
     }
 
     public Result(boolean success){
@@ -32,18 +39,33 @@ public class Result {
         this.setMessage("");
     }
 
-    public Result(boolean success, String message){
+    public Result(boolean success,String message){
         this.setMessage(message);
         this.setSuccess(success);
         if (!success){
-            this.setCode(SERVER_ERROR_CODE);
+            this.setCode("500");
         }
     }
+    public Result(boolean success,String message,Object data){
+        this.setMessage(message);
+        this.setSuccess(success);
+        if (!success){
+            this.setCode("500");
+        }
+        this.setData(data);
+    }
 
-    public Result(boolean success, String code, String message){
+    public Result(boolean success,String code,String message){
         this.setMessage(message);
         this.setSuccess(success);
         this.setCode(code);
+    }
+
+    public Result(boolean success,String code,String message,Object data){
+        this.setMessage(message);
+        this.setSuccess(success);
+        this.setCode(code);
+        this.setData(data);
     }
 
     public String getMessage() {
@@ -68,5 +90,13 @@ public class Result {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
     }
 }

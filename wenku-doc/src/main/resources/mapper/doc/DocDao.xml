@@ -17,6 +17,7 @@
         <result column="author_id" property="authorId"/>
         <result column="create_time" property="createTime"/>
         <result column="page_count" property="pageCount"/>
+        <result column="file_type" property="fileType"/>
     </resultMap>
 
     <!--auto generated Code-->
@@ -34,7 +35,25 @@
         `price`,
         `author_id`,
         `create_time`,
-        `page_count`
+        `page_count`,
+        `file_type`
+    </sql>
+    <sql id="all_column_join">
+        a.id,
+        a.title1,
+        a.title2,
+        a.keywords,
+        a.description,
+        a.seo_keywords,
+        a.abstracts,
+        a.status,
+        a.src,
+        a.levels,
+        a.price,
+        a.author_id,
+        a.create_time,
+        a.page_count,
+        a.file_type
     </sql>
 
     <!--auto generated Code-->
@@ -53,7 +72,8 @@
             `price`,
             `author_id`,
             `create_time`,
-            `page_count`
+            `page_count`,
+            `file_type`
         ) VALUES (
             #{doc.id},
             #{doc.title1},
@@ -68,7 +88,8 @@
             #{doc.price},
             #{doc.authorId},
             #{doc.createTime},
-            #{doc.pageCount}
+            #{doc.pageCount},
+            #{doc.fileType}
         )
     </insert>
 
@@ -90,6 +111,7 @@
             <if test="doc.authorId!=null"> `author_id`,</if>
             <if test="doc.createTime!=null"> `create_time`,</if>
             <if test="doc.pageCount!=null"> `page_count`,</if>
+            <if test="doc.pageCount!=null"> `file_type`,</if>
         </trim>
         VALUES
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -107,6 +129,7 @@
             <if test="doc.authorId!=null">#{doc.authorId},</if>
             <if test="doc.createTime!=null">#{doc.createTime},</if>
             <if test="doc.pageCount!=null">#{doc.pageCount},</if>
+            <if test="doc.pageCount!=null">#{doc.fileType},</if>
         </trim>
     </insert>
 
@@ -130,7 +153,8 @@
             #{doc.price},
             #{doc.authorId},
             #{doc.createTime},
-            #{doc.pageCount}
+            #{doc.pageCount},
+            #{doc.fileType}
             )
         </foreach>
     </insert>
@@ -153,6 +177,7 @@
             <if test="doc.authorId != null"> `author_id` = #{doc.authorId}, </if>
             <if test="doc.createTime != null"> `create_time` = #{doc.createTime} </if>
             <if test="doc.pageCount != null"> `page_count` = #{doc.pageCount} </if>
+            <if test="doc.fileType != null"> `file_type` = #{doc.fileType} </if>
         </set>
         WHERE id = #{doc.id}
     </update>
@@ -162,6 +187,15 @@
         select
         <include refid="all_column"/>
         from ${table}
+    </select>
+
+    <select id="findUnChecked" resultMap="AllColumnMap">
+        select
+        <include refid="all_column_join"/>
+        from ${table} a  JOIN doc_proc_queue  b ON a.id = b.did WHERE b.state = 2 AND  a.status = 0
+        <if test="key != null">
+            AND title1 LIKE CONCAT('%','${key}','%' )
+        </if>
     </select>
 
     <select id="findByTitle1Containing" resultMap="AllColumnMap">
@@ -177,6 +211,16 @@
         from ${table}
         WHERE id = #{id}
     </select>
+
+    <select id="findByAuthorIdAndStatus" resultMap="AllColumnMap">
+        select
+        <include refid="all_column"/>
+        from ${table}
+        WHERE author_id = #{authorId} AND status = #{status}
+    </select>
+
+
+
 
     <delete id="delete">
         DELETE  FROM ${table}

@@ -20,7 +20,6 @@ public class HomeController {
 
     @RequestMapping("/")
     public  String index(){
-
         return "index";
     }
 
@@ -28,6 +27,7 @@ public class HomeController {
     public String topInfo(HttpServletRequest request,Model model){
         model.addAttribute("logined",guard.isLogined(request));
         model.addAttribute("user",guard.getLoginUser(request));
+
         return "common/topinfo";
     }
 

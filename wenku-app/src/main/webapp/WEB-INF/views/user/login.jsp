@@ -46,7 +46,7 @@
                                             <div class="col-sm-offset-3 col-sm-8">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox"> 7 天内免登录
+                                                        <input type="checkbox" value="1" name="remember"> 7 天内免登录
                                                     </label>
                                                 </div>
                                             </div>

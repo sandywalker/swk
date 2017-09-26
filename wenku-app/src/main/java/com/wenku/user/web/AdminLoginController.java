@@ -1,5 +1,6 @@
 package com.wenku.user.web;
 
+import com.belerweb.social.http.Http;
 import com.wenku.define.Result;
 import com.wenku.user.model.AdminAuth;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,12 @@ public class AdminLoginController {
     @GetMapping("login")
     public String adminLogin(){
         return "admin/login";
+    }
+
+    @GetMapping("logout")
+    public String adminLogout(HttpServletRequest request){
+        request.getSession().removeAttribute(AdminAuth.ADMIN_SESSION_ATTR);
+        return "redirect:/";
     }
 
     @PostMapping("login")

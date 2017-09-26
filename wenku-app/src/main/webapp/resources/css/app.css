@@ -418,32 +418,27 @@ label.error {
           text-align: center;
           line-height: 22px;
           font-size: 12px; }
-      .search-results li .doc-main .info {
-        margin-left: 110px; }
-        .search-results li .doc-main .info h2 {
-          margin: 0 0 15px 0;
-          font-size: 18px; }
-          .search-results li .doc-main .info h2 a:link, .search-results li .doc-main .info h2 a:visited {
-            color: #333; }
-          .search-results li .doc-main .info h2 a:hover {
-            color: #f15a22; }
-          .search-results li .doc-main .info h2 .link-fav {
-            font-weight: normal;
-            float: right;
-            font-size: 12px;
-            color: #005aa0; }
-            .search-results li .doc-main .info h2 .link-fav:hover {
-              text-decoration: none;
-              color: #ef4136; }
-            .search-results li .doc-main .info h2 .link-fav i {
-              color: #ef4136; }
-        .search-results li .doc-main .info p {
+      .search-results li .doc-main .info h2 {
+        margin: 0 0 15px 0;
+        font-size: 18px; }
+        .search-results li .doc-main .info h2 a:link, .search-results li .doc-main .info h2 a:visited {
+          color: #333; }
+        .search-results li .doc-main .info h2 a:hover {
+          color: #f15a22; }
+        .search-results li .doc-main .info h2 .link-fav {
+          font-weight: normal;
+          float: right;
           font-size: 12px;
-          color: #999; }
+          color: #005aa0; }
+          .search-results li .doc-main .info h2 .link-fav:hover {
+            text-decoration: none;
+            color: #ef4136; }
+          .search-results li .doc-main .info h2 .link-fav i {
+            color: #ef4136; }
+      .search-results li .doc-main .info p {
+        font-size: 12px;
+        color: #999; }
       .search-results li .doc-main .info-footer {
-        position: absolute;
-        bottom: 18px;
-        left: 110px;
         font-size: 12px;
         color: #005aa0; }
         .search-results li .doc-main .info-footer .create-time {
@@ -578,23 +573,45 @@ label.error {
   min-height: 800px;
   border-left: none; }
 #mySpace .upload-box {
-  height: 200px;
-  width: 80%;
+  min-height: 200px;
   margin: 50px auto;
-  background: #f2f2f2;
-  border: 1px dashed #ddd;
+  border: 1px solid #ddd;
   text-align: center; }
+  #mySpace .upload-box .btn-select, #mySpace .upload-box .webuploader-pick {
+    display: block;
+    border: none;
+    margin: 20px auto 10px 20px;
+    background: #009ad6;
+    width: 200px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 14px; }
   #mySpace .upload-box .btn-upload {
     display: block;
     border: none;
-    margin: 70px auto 10px auto;
-    background: #009ad6;
-    width: 50%;
-    height: 60px;
+    margin: 20px 20px 10px auto;
+    background: #f36c21;
+    width: 200px;
     border-radius: 3px;
     color: #fff;
-    line-height: 60px;
-    font-size: 22px; }
+    font-size: 14px; }
+#mySpace .uploader-list {
+  text-align: left; }
+  #mySpace .uploader-list tbody tr {
+    height: 50px;
+    line-height: 50px; }
+    #mySpace .uploader-list tbody tr td {
+      border-bottom: 1px solid #ddd;
+      background: #fff; }
+    #mySpace .uploader-list tbody tr .file {
+      padding-left: 20px;
+      text-align: left;
+      overflow: hidden; }
+    #mySpace .uploader-list tbody tr .state {
+      font-size: 12px;
+      color: #f36c21; }
+    #mySpace .uploader-list tbody tr .percent .progress {
+      margin: 0; }
 #mySpace .upload-hint {
   color: #999; }
   #mySpace .upload-hint li {

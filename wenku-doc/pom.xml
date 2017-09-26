@@ -17,6 +17,8 @@
             <artifactId>wenku-core</artifactId>
             <version>${wenku-version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.aspose/aspose-words -->
+
     </dependencies>
 
 </project>

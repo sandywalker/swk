@@ -1,5 +1,6 @@
 package com.wenku.security.filter;
 
+import com.wenku.security.Guard;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.PatternMatchUtils;
 
@@ -18,9 +19,9 @@ public class UserOnLineFilter implements Filter {
     private String excludes;
     private String mappings;
 
-    public static final  String UID_ATTRIBUTE = "webku.uid";
 
-    public UserOnLineFilter(String redirectTo, String mappings,String excludes) {
+
+    public UserOnLineFilter(String redirectTo, String mappings, String excludes) {
         this.redirectTo = redirectTo;
         this.excludes = excludes;
         this.mappings = mappings;
@@ -43,9 +44,11 @@ public class UserOnLineFilter implements Filter {
             filterChain.doFilter(servletRequest,servletResponse);
             return;
         }
-        if (request.getSession().getAttribute(UID_ATTRIBUTE)!=null){
+        if (request.getSession().getAttribute(Guard.UID_ATTRIBUTE)!=null){
             filterChain.doFilter(servletRequest,servletResponse);
-        }else {
+        }else if (Guard.authByCookie(request,response)){
+            filterChain.doFilter(servletRequest,servletResponse);
+        }else{
             String redirect = StringUtils.isBlank(redirectTo) ? "/" : redirectTo;
             response.sendRedirect(redirect);
         }

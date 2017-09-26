@@ -14,11 +14,11 @@ public class AdminUserInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-//        String adminUsername =  (String)request.getSession().getAttribute(AdminAuth.ADMIN_SESSION_ATTR);
-//        if (StringUtils.isBlank(adminUsername)){
-//            response.sendRedirect("/admin/login");
-//            return false;
-//        }
+        String adminUsername =  (String)request.getSession().getAttribute(AdminAuth.ADMIN_SESSION_ATTR);
+        if (StringUtils.isBlank(adminUsername)){
+            response.sendRedirect("/admin/login");
+            return false;
+        }
         return super.preHandle(request, response, handler);
     }
 }

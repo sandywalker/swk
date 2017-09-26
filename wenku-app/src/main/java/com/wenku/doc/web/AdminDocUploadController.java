@@ -5,6 +5,7 @@ import com.wenku.doc.model.BaseDoc;
 import com.wenku.doc.model.DocTableNames;
 import com.wenku.doc.model.DocUpload;
 import com.wenku.doc.service.DocService;
+import com.wenku.doc.service.ProcQueueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,6 +24,8 @@ public class AdminDocUploadController {
     private DocService docService;
 
 
+
+
     @RequestMapping("uploadHome")
     public String uploadHome(){
         return "admin/doc/uploads";
@@ -30,8 +33,8 @@ public class AdminDocUploadController {
 
     @RequestMapping("uploads")
     @ResponseBody
-    public Page<BaseDoc> docUploads(Pageable pageable){
-        return docService.findDocs(DocTableNames.TABLE_UPLOAD,pageable);
+    public Page<BaseDoc> docUploads(Pageable pageable,String key){
+        return docService.findUncheckedDoc(DocTableNames.TABLE_UPLOAD,key,pageable);
     }
 
     @GetMapping("uploads/{id}")

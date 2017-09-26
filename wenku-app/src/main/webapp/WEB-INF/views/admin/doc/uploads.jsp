@@ -8,7 +8,7 @@
                     <form class="navbar-form navbar-right" id="queryForm">
                         <div class="form-group">
                             <label>标题：</label>
-                            <input type="text" class="form-control" name="f_title1">
+                            <input type="text" class="form-control" name="key">
                         </div>
                         <button type="button" id="btnQuery" class="btn btn-default"><i class="glyphicon glyphicon-search"></i> 查询</button>
                     </form>

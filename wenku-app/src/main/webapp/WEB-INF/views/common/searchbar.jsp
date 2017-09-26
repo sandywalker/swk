@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-9">
             <form action="${ctx}/search" class="search-form">
-                <input type="text" id="query" name="query" class="query" placeholder="" value="${key}">
+                <input type="text" id="query" name="key" class="query" placeholder="" value="${key}">
                 <button type="submit" class="btn-search"> 搜一下 </button>
             </form>
         </div>
