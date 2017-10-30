@@ -28,36 +28,41 @@
                 <div class="col-md-10 main">
                     <br>
                     <ul class="nav nav-tabs">
-                        <li role="presentation" class="active"><a href="${ctx}/user/setting"> <i class="glyphicon glyphicon-user"></i> 账户信息</a></li>
-                        <li role="presentation" ><a href="${ctx}/user/cpass"> <i class="glyphicon glyphicon-lock"></i> 修改密码</a></li>
+                        <li role="presentation" ><a href="${ctx}/user/setting"> <i class="glyphicon glyphicon-user"></i> 账户信息</a></li>
+                        <li role="presentation" class="active" ><a href="${ctx}/user/cpass"> <i class="glyphicon glyphicon-lock"></i> 修改密码</a></li>
                     </ul>
                     <br>
                     <c:if test="${not empty message}">
                         <div class="alert alert-success">${message}</div>
                     </c:if>
-                    <form class="form-horizontal" action="${ctx}/user/setting" method="post" id="myAccount">
+                    <c:if test="${not empty error}">
+                        <div class="alert alert-error">${error}</div>
+                    </c:if>
+                    <form class="form-horizontal" action="${ctx}/user/cpass" method="post" id="changePass">
+
                         <div class="form-group">
-                            <label  class="col-sm-3 control-label">用户名 (邮箱)：</label>
+                            <label for="password" class="col-sm-3 control-label">当前密码：</label>
                             <div class="col-sm-4">
-                                <p class="form-text">${user.email}</p>
+                                <input type="password"  name="password" class="form-control " id="password">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="nickName" class="col-sm-3 control-label">昵称：</label>
+                            <label for="newPass" class="col-sm-3 control-label">新密码：</label>
                             <div class="col-sm-4">
-                                <input type="text"  name="nickName" class="form-control " id="nickName" placeholder="昵称" value="${user.nickName}">
+                                <input type="password"  name="newPass" class="form-control " id="newPass">
                             </div>
                         </div>
+
                         <div class="form-group">
-                            <label for="phone" class="col-sm-3 control-label">手机号：</label>
+                            <label for="newPassConfirm" class="col-sm-3 control-label">确认新密码：</label>
                             <div class="col-sm-4">
-                                <input type="text"  name="phone" class="form-control " id="phone" placeholder="手机号" value="${user.phone}">
+                                <input type="password"  name="newPassConfirm" class="form-control " id="newPassConfirm">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-8">
-                                <button type="submit" class="btn btn-warning">更新账户信息</button>
+                                <button type="submit" class="btn btn-warning">更新密码</button>
                             </div>
                         </div>
 
@@ -73,26 +78,46 @@
         <script>
             (function () {
 
-                $('#myAccount').validate({
+                $('#changePass').validate({
                     rules:{
-                        nickName:{
+                        mail:{
                             required:true,
-                            maxlength:20
+                            email:true,
+                            maxlength:32,
+                            remote: ctx + "/register/check/email?mail=" + $('#inputMail').val()
                         },
-                        phone:{
-                            number:true,
-                            maxlength:11,
-                            minlength:11
+                        password:{
+                            required:true,
+                            remote: {
+                                type:'POST',
+                                url:ctx + '/user/vpass',
+                                data:{pass:function(){
+                                    return $('#password').val();
+                                }}
+                            }
+                        },
+                        newPass:{
+                            required:true,
+                            minlength:8,
+                            maxlength:16,
+                        },
+                        newPassConfirm:{
+                            required:true,
+                            minlength:8,
+                            maxlength:16,
+                            equalTo:'#newPass'
                         }
                     },
                     messages:{
-                        nickName:{
-                            required:'请填写合适的昵称！'
+                        password:{
+                            remote:'当前密码不正确！'
                         },
-                        phone:{
-                            number:'请输入正确的手机号',
-                            minlength:'请输入正确的手机号',
-                            maxlength:'请输入正确的手机号'
+                        newPass:{
+                            minlength:'密码长度至少需要 8 位！',
+                            maxlength:'密码长度不能 16 位！',
+                        },
+                        newPassConfirm:{
+                            equalTo:'密码两次输入的不一致，请确保密码输入一致！'
                         }
                     }
                 });

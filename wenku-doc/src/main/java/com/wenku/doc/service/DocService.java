@@ -133,6 +133,7 @@ public class DocService {
             return Result.fail("数据不存在！");
         }
         data.setId(id);
+        data.setStatus(DocStatus.ok);
         docDao.insert(DocTableNames.TABLE_PRODUCT,data);
         docDao.delete(DocTableNames.TABLE_UPLOAD,id);
         CheckLog checkLog = new CheckLog(id,data.getAuthorId(), DocStatus.ok,"");
@@ -147,6 +148,7 @@ public class DocService {
             return Result.fail("数据不存在！");
         }
         data.setId(id);
+        data.setStatus(DocStatus.failed);
         docDao.insert(DocTableNames.TABLE_TRASH,data);
         docDao.delete(DocTableNames.TABLE_UPLOAD,id);
         CheckLog checkLog = new CheckLog(id,data.getAuthorId(), DocStatus.failed,"审核不通过");

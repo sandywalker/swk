@@ -7,13 +7,18 @@ import com.wenku.security.Guard;
 import com.wenku.user.model.ActivateResult;
 import com.wenku.user.model.User;
 import com.wenku.user.service.UserService;
+import com.wenku.util.MVCUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.util.WebUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 
 /**
  * Created by sandy on 04/07/2017.
@@ -113,9 +118,57 @@ public class UserController {
     }
 
     @GetMapping("user/setting")
-    public String setting(){
-
+    public String setting(HttpServletRequest request,Model model){
+        Long uid = Guard.getUID(request);
+        User user = userService.findOne(uid);
+        model.addAttribute("user",user);
         return "user/setting";
+    }
+
+    @GetMapping("user/cpass")
+    public String changePass(){
+        return "user/cpass";
+    }
+
+    @PostMapping("user/cpass")
+    public String updatePassword(HttpServletRequest request,String password,String newPass,RedirectAttributes rattr){
+        Assert.hasText(password,"密码不能为空！");
+        Assert.hasText(newPass,"新密码不能为空！");
+        Long uid = Guard.getUID(MVCUtils.getCurrentRequest());
+        User user = userService.findOne(uid);
+        String enpass = userService.encryptPassword(user,password);
+        boolean valid = enpass.equals(user.getPass());
+        if (valid){
+            String newEnpass = userService.encryptPassword(user,newPass);
+            user.setPass(newEnpass);
+            user.setUpdateDate(new Date());
+            userService.update(user);
+            rattr.addFlashAttribute("message","密码修改成功！");
+        }else{
+           rattr.addFlashAttribute("error","密码修改失败！");
+        }
+        return "redirect:/user/cpass";
+    }
+
+    @PostMapping("user/vpass")
+    @ResponseBody
+    public Boolean validatePassword(String pass){
+        Assert.hasText(pass,"密码不能为空！");
+        Long uid = Guard.getUID(MVCUtils.getCurrentRequest());
+        User user = userService.findOne(uid);
+        String enpass = userService.encryptPassword(user,pass);
+        return enpass.equals(user.getPass());
+    }
+
+    @PostMapping("user/setting")
+    public String updateSetting(User user, HttpServletRequest request, RedirectAttributes rattr){
+        Long uid = Guard.getUID(request);
+        user.setId(uid);
+        user.setStatus(null);
+        user.setUpdateDate(new Date());
+        userService.update(user);
+        rattr.addFlashAttribute("message","信息已更新！");
+        return "redirect:/user/setting";
     }
 
 

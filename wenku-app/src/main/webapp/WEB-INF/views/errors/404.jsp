@@ -6,7 +6,13 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- 无响应式布局的CSS -->
+	<!--[if lt IE 9]>
+	<script src="${ctx}/resources/js/html5.js"></script>
+	<![endif]-->
 	<style>
 		.alert{
 			margin:100px auto;

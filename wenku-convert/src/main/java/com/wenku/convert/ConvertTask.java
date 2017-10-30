@@ -48,10 +48,7 @@ public class ConvertTask implements Callable<Result> {
         this.pdfPath = pdfPath;
         this.htmlPath = htmlPath;
         this.fontPath = fontPath;
-        File htmlDir = new File(htmlPath);
-        if (!htmlDir.exists()){
-            htmlDir.mkdir();
-        }
+
 
         this.qid  = qid;
         this.did = did;
@@ -82,6 +79,28 @@ public class ConvertTask implements Callable<Result> {
         this.pdfPath = pdfPath;
     }
 
+
+    private void prepare(){
+        File htmlDir = new File(htmlPath);
+        if (!htmlDir.exists()){
+            htmlDir.mkdir();
+        }else{
+            try {
+                FileUtils.cleanDirectory(htmlDir);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        File pdfFile = new File(pdfPath);
+        if (pdfFile.exists()){
+            try {
+                FileUtils.forceDelete(pdfFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     @Override
     public Result call() throws Exception {
 
@@ -91,6 +110,8 @@ public class ConvertTask implements Callable<Result> {
             convertDao.updateQueueState(qid, ProcState.failed,"file: " + filePath + " not exists!");
             return Result.fail("file not exists");
         }
+        prepare();
+
         String ext = FilenameUtils.getExtension(filePath);
         this.convertDao.updateQueueState(qid, ProcState.processing,null);
         logger.debug("begin convert file: " + filePath);
@@ -103,6 +124,8 @@ public class ConvertTask implements Callable<Result> {
         fs.setFontSubstitutes("楷体_GB2312","STKaiti");
         fs.setFontSubstitutes("仿宋_GB2312","STFangsong");
         fs.setFontSubstitutes("宋体_GB2312","STSong");
+
+
 
         if ("docx".equalsIgnoreCase(ext)||"doc".equalsIgnoreCase(ext)){
             result = convertWord();
@@ -133,7 +156,6 @@ public class ConvertTask implements Callable<Result> {
     private void pdfToHtml(){
         com.aspose.pdf.Document pdfDoc = new com.aspose.pdf.Document(pdfPath);
 
-
         logger.debug("converting html for ie...");
         com.aspose.pdf.HtmlSaveOptions pdfOptions = new com.aspose.pdf.HtmlSaveOptions();
 //            pdfOptions.setFixedLayout(true);
@@ -144,6 +166,7 @@ public class ConvertTask implements Callable<Result> {
 
         pdfOptions.setConvertMarkedContentToLayers(true);
         pdfOptions.setUseZOrder(true);
+
 
         String dirPath = htmlPath + "/main";
         File dir = new File(dirPath);
@@ -182,6 +205,8 @@ public class ConvertTask implements Callable<Result> {
                 fixedSaveOptions.setPageCount(1);
                 String html = String.format("%s/modern/page%d.html",htmlPath,i+1);
                 word.save( html, fixedSaveOptions);
+                HtmlUtils.fixHtml(html);
+
             }
             logger.debug("html converted, htmlPath: " + htmlPath);
 
@@ -269,6 +294,7 @@ public class ConvertTask implements Callable<Result> {
             this.replacePPTFont(pres,"宋体_GB2312","STSong");
             this.replacePPTFont(pres,"宋体","STSong");
 
+
             PdfOptions pdfOptions = new PdfOptions();
 //            pdfOptions.setAdditionalCommonFontFamilies(new String[]{"STKaiti","STKaiti","STKaiti"});
 
@@ -298,7 +324,9 @@ public class ConvertTask implements Callable<Result> {
             }
             for (int i = 0; i < pres.getSlides().size(); i++)
             {
-                pres.save(htmlPath + "/modern/page" + (i + 1) + ".html", new int[] { i + 1 }, SaveFormat.Html, htmlOptions);
+                String htmlFile = htmlPath + "/modern/page" + (i + 1) + ".html";
+                pres.save(htmlFile, new int[] { i + 1 }, SaveFormat.Html, htmlOptions);
+                HtmlUtils.fixHtml(htmlFile);
             }
 
             //for ie
@@ -360,6 +388,7 @@ public class ConvertTask implements Callable<Result> {
             page.getPageInfo().getMargin().setTop(0);
             page.getPageInfo().getMargin().setLeft(0);
             page.getPageInfo().getMargin().setRight(0);
+
 
             page.setCropBox(new Rectangle(0, 0, 400, 400));
             Image html1 = new Image();

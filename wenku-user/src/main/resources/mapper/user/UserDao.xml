@@ -118,7 +118,7 @@
             <if test="pojo.salt != null"> `salt` = #{pojo.salt}, </if>
             <if test="pojo.status != null"> `status` = #{pojo.status}, </if>
             <if test="pojo.utype != null"> `utype` = #{pojo.utype}, </if>
-            <if test="pojo.nickName != null"> `utype` = #{pojo.nickName}, </if>
+            <if test="pojo.nickName != null"> `nick_name` = #{pojo.nickName}, </if>
             <if test="pojo.createDate != null"> `create_date` = #{pojo.createDate}, </if>
             <if test="pojo.updateDate != null"> `update_date` = #{pojo.updateDate} </if>
         </set>

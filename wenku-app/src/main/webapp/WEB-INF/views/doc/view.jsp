@@ -5,14 +5,14 @@
     <jsp:attribute name="css">
         <style>
             .page-wrapper{
-                width:800.95pt; height:938.55pt;
+                width:100%;
                 margin:20px auto;
                 border:1px solid #ddd;
                 overflow: hidden;
                 padding:0;
             }
             iframe{
-                width:800.95pt; height:938.55pt;
+                width:100%;
                 display: block;
                 margin:0;
                 border:none;
@@ -23,7 +23,19 @@
             .loading{
                 position:fixed;
                 top:50%;
-                left:50%;
+                left:40%;
+            }
+
+            #viewer{
+                border:none;
+            }
+
+            .floatSide{
+                position: fixed;
+                top:270px;
+                right:20px;
+                width:260px;
+                background: #fff;
             }
         </style>
     </jsp:attribute>
@@ -68,15 +80,15 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="toolbar">
-                            <a href="#" class="btn btn-success pull-right"> <i class="glyphicon glyphicon-save"></i> 下载文档 </a>
+                            <a href="#" class="btn btn-success pull-right" > <i class="glyphicon glyphicon-save"></i> 下载文档 </a>
                             <%--<a href="#" class="hand btn-tool active"><i class="glyphicon glyphicon-hand-up"></i></a>--%>
                             <%--<a href="#" class="hand btn-tool"><i class="glyphicon glyphicon-text-size"></i></a>--%>
                             <%--<a href="#" class="hand btn-tool"><i class="glyphicon glyphicon-fullscreen"></i></a>--%>
                             <%--<a href="#" class="hand btn-tool"><i class="glyphicon glyphicon-zoom-in"></i></a>--%>
                             <%--<a href="#" class="hand btn-tool"><i class="glyphicon glyphicon-zoom-out"></i></a>--%>
-                            <a href="#" class="hand btn-tool"><i class="glyphicon glyphicon-menu-left"></i></a>
-                            <span class="doc-page"><input type="text" class="current-page" value="1"> / ${doc.pageCount} </span>
-                            <a href="#" class="hand btn-tool"><i class="glyphicon glyphicon-menu-right"></i></a>
+                            <a href="#" class="hand btn-tool"><i class="glyphicon glyphicon-menu-left" id="btnPrev"></i></a>
+                            <span class="doc-page"><input type="text" class="current-page" id="currentPage" value="1"> / <span id="totalPage">${doc.pageCount}</span> </span>
+                            <a href="#" class="hand btn-tool"><i class="glyphicon glyphicon-menu-right" id="btnNext"></i></a>
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -90,9 +102,12 @@
                     <input type="hidden" id="fileType" value="${doc.fileType}">
                     <div id="viewer">
                         <div class="loading" ><img src="${ctx}/resources/img/loading.gif" alt="" id="loading" style="display:none;"></div>
+                        <%--<iframe id="docPage" class="doc-page" src="http://www.baidu.com" frameborder="0"></iframe>--%>
                         <c:forEach begin="1" end="${doc.pageCount}" varStatus="status">
                             <div class="page-wrapper" data-page="${status.index}">
-                                <iframe class="doc-page" data-src="${docServer}/${doc.id}/main/page${status.index}.html" frameborder="0"></iframe>
+                                <iframe id="page${status.index}" class="doc-page doc-${doc.fileType}" data-ext="${doc.fileType}"
+                                        data-src="${docServer}/${doc.id}/main/page${status.index}.html"
+                                        frameborder="0" horizontalscrolling="no" verticalscrolling="no"></iframe>
                             </div>
                         </c:forEach>
                     </div>
@@ -118,13 +133,23 @@
 
     </jsp:attribute>
     <jsp:attribute name="js">
+        <script type="text/javascript" src="${ctx}/resources/lib/handlebars/handlebars.min.js"></script>
+        <script type="text/javascript" src="${ctx}/resources/js/wenku.js"></script>
         <script type="text/javascript">
             (function () {
 
-                var fileType = $('#fileType').val();
+//                console.log($('#docPage').innerWidth());
+
+                var fileType = $('#fileType').val().toLowerCase();
 
                 var $pages = $('iframe.doc-page');
                 var $loading = $('#loading');
+
+                var $currentPage = $('#currentPage');
+                var $btnPrev = $('#btnPrev');
+                var $btnNext = $('#btnNext');
+
+                var totalPage = SKUtils.toNumber($('#totalPage').text(),1);
 
 
                 var pageCount = $pages.length;
@@ -143,17 +168,54 @@
                 var oldIE = IETester() == 8.0 || IETester() == 7.0 || IETester() == 6.0 || IETester() == 5.0;
 
                 $pages.each(function(i,item){
-                    var src = $(item).data('src');
+                    var src = $(item).attr('data-src');
                     var ext = fileType.toLowerCase();
                     if (!oldIE && (ext === 'ppt'|| ext === 'pptx' || ext === 'doc' || ext === 'docx')){
                         $(item).attr('data-src',src.replace('main','modern'));
                     }
                 });
 
+                if (oldIE&&(fileType=== 'ppt'|| fileType === 'pptx')){
+                    $('#viewerSide').addClass('floatSide');
+                }
+
+
+
                 $('.page-wrapper').each(function(i,item){
+                    var $iframe = $('iframe',item);
+
+                    if ($iframe.data('ext') === 'ppt'||$iframe.data('ext') === 'pptx'){
+                        if (oldIE){
+                            $iframe.parent().width(960);
+                            $iframe.width(960);
+                        }
+                        $iframe.height($iframe.width()*0.75);
+                    }else{
+                        $iframe.height($iframe.width()*1.42);
+                    }
+                    var src = $iframe.data('src');
+                    $iframe.attr('data-src',src+'#width='+$iframe.width());
+                    //console.log($iframe.attr('data-src'));
                     if (i<initPageCount){
-                        var $iframe = $('iframe',item);
-                        $iframe.attr('src',$iframe.data('src'));
+                        $iframe.attr('src',$iframe.attr('data-src'));
+                    }
+                });
+
+                $btnPrev.on('click',function(e){
+                    e.preventDefault();
+                    if ($currentPage.val()>1){
+                        $currentPage.val( SKUtils.toNumber($currentPage.val()) -1);
+                        var id = 'page' + ($currentPage.val());
+                        document.getElementById(id).scrollIntoView();
+                    }
+                });
+
+                $btnNext.on('click',function(e){
+                    e.preventDefault();
+                    if ($currentPage.val()<totalPage){
+                        $currentPage.val( SKUtils.toNumber($currentPage.val()) +1);
+                        var id = 'page' + ($currentPage.val());
+                        document.getElementById(id).scrollIntoView();
                     }
                 });
 
@@ -161,24 +223,33 @@
                     clearTimeout( $.data( this, "scrollCheck" ) );
                     var docHeight = window.innerHeight||document.documentElement.clientHeight;
                     $.data( this, "scrollCheck", setTimeout(function() {
-                        $('.content').each(function(i,item){
+                        $('.page-wrapper').each(function(i,item){
                             var top = $(item).offset().top - $(window).scrollTop();
                             var buff = $(item).height() / 2;
 
                             if (top>-buff&&top<docHeight){
+                                $currentPage.val(i+1);
                                 var $iframe = $('iframe',item);
+
                                 if (!$iframe.attr('src')){
                                     $('#loading').show();
                                     $iframe.attr('src',$iframe.attr('data-src'));
                                 }
                             }
                         });
-                    }, 250) );
+                    }, 250));
                 });
 
                 $pages.on('load', function() {
                     $loading.hide();
+                    //console.log($(this).outerWidth());
                 });
+
+//                document.addEventListener('copy', function(e){
+//                    e.clipboardData.setData('text/plain', 'Hello, world!');
+//                    e.clipboardData.setData('text/html', '<b>Hello, world!</b>');
+//                    e.preventDefault(); // We want our data, not data from any selection, to be written to the clipboard
+//                });
 
 
             })();
