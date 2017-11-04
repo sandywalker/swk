@@ -144,6 +144,7 @@ public class UserController {
             user.setUpdateDate(new Date());
             userService.update(user);
             rattr.addFlashAttribute("message","密码修改成功！");
+
         }else{
            rattr.addFlashAttribute("error","密码修改失败！");
         }
